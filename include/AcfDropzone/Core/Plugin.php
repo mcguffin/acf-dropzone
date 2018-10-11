@@ -26,8 +26,6 @@ class Plugin extends PluginComponent {
 	/** @var string plugin components which might need upgrade */
 	private static $components = array(
 		'AcfDropzone\Compat\ACF',
-		'AcfDropzone\Compat\Polylang',
-		'AcfDropzone\Compat\WPMU',
 	);
 
 	/**
