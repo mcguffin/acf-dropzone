@@ -1,0 +1,29 @@
+{
+  "name": "acf-dropzone",
+  "version": "0.0.1",
+  "description": "Plugin description",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com//acf-dropzone.git"
+  },
+  "author": "Jörn Lund",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com//acf-dropzone/issues"
+  },
+  "homepage": "https://github.com//acf-dropzone#readme",
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-concat": "*",
+    "gulp-rename": "*",
+    "gulp-sass": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-uglify": "*",
+    "gulp-util": "*"
+  }
+}
