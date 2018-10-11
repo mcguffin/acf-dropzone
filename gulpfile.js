@@ -28,7 +28,7 @@ function do_js( src ) {
 	return gulp.src( './src/js/' + src + '.js' )
 		.pipe( sourcemaps.init() )
 		.pipe( gulp.dest( './js/' + dir ) )
-		.pipe( uglify().on('error', gulputil.log ) )
+		.pipe( uglify().on('error', console.log ) )
 		.pipe( rename( { suffix: '.min' } ) )
 		.pipe( sourcemaps.write() )
 		.pipe( gulp.dest( './js/' + dir ) );
@@ -48,30 +48,24 @@ function concat_js( src, dest ) {
 
 
 gulp.task('scss', function() {
-	return [
-	];
+	return do_scss('admin/acf-dropzone');
 });
 
 
 gulp.task('js-admin', function() {
-    return [
-    ];
-
+    return do_js('admin/acf-dropzone');
 });
 
 
-gulp.task( 'js', function(){
-	return concat_js( [
-	], 'frontend.js');
-} );
+gulp.task( 'js', gulp.parallel( 'js-admin') );
 
 
-gulp.task('build', ['scss','js','js-admin'] );
+gulp.task('build', gulp.parallel('scss','js' ) );
 
 
 gulp.task('watch', function() {
 	// place code for your default task here
-	gulp.watch('./src/scss/**/*.scss',[ 'scss' ]);
-	gulp.watch('./src/js/**/*.js',[ 'js', 'js-admin' ]);
+	gulp.watch('./src/scss/**/*.scss',gulp.parallel('scss') );
+	gulp.watch('./src/js/**/*.js',gulp.parallel( 'js') );
 });
-gulp.task('default', ['build','watch']);
+gulp.task('default', gulp.parallel('build','watch'));

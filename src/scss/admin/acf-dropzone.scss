@@ -1,0 +1,25 @@
+@import '../variables/variables';
+
+@import '../mixins/mixins';
+
+.acf-field-gallery,
+.acf-field-image,
+.acf-field-file {
+	&.dropzone {
+		.acf-file-uploader,
+		.acf-image-uploader {
+			&:not(.has-value) {
+				border-radius:10px;
+				padding:20px;
+				border:6px dashed $wp-gray;
+			}
+		}
+		.acf-input {
+			position:relative;
+		}
+		.uploader-window {
+			position:absolute;
+
+		}
+	}
+}

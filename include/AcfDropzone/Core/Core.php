@@ -44,17 +44,8 @@ class Core extends Plugin {
 	 *  @action plugins_loaded
 	 */
 	public function init_compat() {
-		if ( is_multisite() && is_plugin_active_for_network( $this->get_wp_plugin() ) ) {
-			Compat\WPMU::instance();
-		}
 		if ( function_exists('\acf') && version_compare( acf()->version,'5.0.0','>=') ) {
 			Compat\ACF::instance();
-		}
-		if ( defined('POLYLANG_VERSION') && version_compare( POLYLANG_VERSION, '1.0.0', '>=' ) ) {
-			Compat\Polylang::instance();
-		}
-		if ( class_exists( '\RegenerateThumbnails' ) ) {
-			Compat\RegenerateThumbnails::instance();
 		}
 	}
 

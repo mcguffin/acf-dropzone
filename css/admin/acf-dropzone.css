@@ -1,0 +1,35 @@
+/* Both Admin Menu and Post Formats */
+/* Post Format Icons */
+/* Welcome Screen Icons */
+/* Image Editing Icons */
+/* Both Image Editing and TinyMCE */
+/* TinyMCE Icons */
+/* Post Icons */
+/* Sorting */
+/* WPorg specific icons: Jobs, Profiles, WordCamps */
+/* Internal/Products */
+/* Taxonomies */
+/* Widget icons */
+/* Media icons */
+/* Alerts/Notifications/Flags */
+/* Social Icons */
+/* Misc/CPT */
+.acf-field-gallery.dropzone .acf-file-uploader:not(.has-value),
+.acf-field-gallery.dropzone .acf-image-uploader:not(.has-value),
+.acf-field-image.dropzone .acf-file-uploader:not(.has-value),
+.acf-field-image.dropzone .acf-image-uploader:not(.has-value),
+.acf-field-file.dropzone .acf-file-uploader:not(.has-value),
+.acf-field-file.dropzone .acf-image-uploader:not(.has-value) {
+  border-radius: 10px;
+  padding: 20px;
+  border: 6px dashed #f1f1f1; }
+
+.acf-field-gallery.dropzone .acf-input,
+.acf-field-image.dropzone .acf-input,
+.acf-field-file.dropzone .acf-input {
+  position: relative; }
+
+.acf-field-gallery.dropzone .uploader-window,
+.acf-field-image.dropzone .uploader-window,
+.acf-field-file.dropzone .uploader-window {
+  position: absolute; }
