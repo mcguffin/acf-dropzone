@@ -64,3 +64,16 @@
 .acf-field-image.dropzone .media-progress-bar,
 .acf-field-file.dropzone .media-progress-bar {
   margin-bottom: auto; }
+
+.acf-field-image [data-uploader="wp"] > .hide-if-value,
+.acf-field-file [data-uploader="wp"] > .hide-if-value {
+  text-align: center; }
+
+.acf-field-image .acf-dropzone-info,
+.acf-field-file .acf-dropzone-info {
+  color: #b4b9be;
+  margin-bottom: 5px; }
+
+.acf-field-image .drag-drop-info,
+.acf-field-file .drag-drop-info {
+  font-size: 20px; }

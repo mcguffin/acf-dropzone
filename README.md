@@ -1,8 +1,9 @@
 ACF Dropzone
-===============
+============
 
-#### Developer info here. ####
+Add drag and drop upload to ACF File Field, Image field and Gallery field.
 
+Requires at least ACF 5.6.
 
 Installation
 ------------
@@ -30,4 +31,4 @@ ToOo
  - [x] Gallery: test with multiple
  - [x] Gallery: Prepend/Append setting
  - [x] Style: progress bar
- - [ ] Test in repeater
+ - [x] Test in repeater

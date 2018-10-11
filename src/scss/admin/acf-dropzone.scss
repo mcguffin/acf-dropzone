@@ -40,3 +40,19 @@
 		}
 	}
 }
+.acf-field-image,
+.acf-field-file {
+	[data-uploader="wp"] {
+		& > .hide-if-value {
+			text-align:center;
+		}
+	}
+	.acf-dropzone-info {
+		color:$wp-gray-darker;
+		margin-bottom:5px;
+	}
+	.drag-drop-info {
+		font-size:20px;
+
+	}
+}

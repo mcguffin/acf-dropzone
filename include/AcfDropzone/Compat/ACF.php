@@ -125,7 +125,13 @@ class ACF extends Core\PluginComponent {
 				<span class="screen-reader-text"><?php _e('Dismiss this notice.') ?></span>
 			</button>
 		</script>
+		<script type="text/html" id="tmpl-acf-dropzone-info">
+			<p class="drag-drop-info"><?php _e('Drop files here') ?></p>
+			<p><?php _e('or') ?></p>
+		</script>
 		<?php
+
+
 
 	}
 

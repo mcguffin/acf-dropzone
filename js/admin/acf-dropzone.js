@@ -21,6 +21,12 @@
 	// 	},
 	//
 	// });
+
+	var UploaderInfo = wp.media.View.extend({
+		tagName:   'div',
+		className: 'acf-dropzone-info',
+		template:wp.template('acf-dropzone-info')
+	});
 	var Progress = Backbone.View.extend({
 		tagName:   'div',
 		className: 'media-progress-bar-box',
@@ -73,7 +79,8 @@
 			return this;
 		},
 		render:function() {
-			$(this.uploader.render().el).appendTo( this.el );
+			$( this.uploader.render().el ).appendTo( this.el );
+
 			return this;
 		},
 		ready: function() {
@@ -151,8 +158,26 @@
 
 
 	function initFileDropzone( field ) {
-		var el = field.$('[data-uploader="wp"]').get(0),
-			field = field;
+		var el,
+			field = field,
+			info;
+
+		el = field.$('[data-uploader="wp"]').get(0)
+
+		if ( ! el ) {
+			return;
+		}
+		// https://stackoverflow.com/questions/1571076/remove-text-with-jquery
+		field.$('.hide-if-value>p')
+			.contents()
+			.filter( function() {
+				return this.nodeType == 3; //Node.TEXT_NODE
+			})
+			.remove();
+
+		info = new UploaderInfo();
+		info.render();
+		info.$el.prependTo( field.$('.hide-if-value') );
 
 		dropzone = new ACFDropzone({
 			el: el,
