@@ -23,3 +23,11 @@ Installation
  - $ `cd acf-dropzone`
  - $ `npm install`
  - $ `gulp`
+
+ToOo
+====
+
+ - [x] Gallery: test with multiple
+ - [x] Gallery: Prepend/Append setting
+ - [x] Style: progress bar
+ - [ ] Test in repeater

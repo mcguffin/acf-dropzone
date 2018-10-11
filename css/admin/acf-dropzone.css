@@ -20,9 +20,8 @@
 .acf-field-image.dropzone .acf-image-uploader:not(.has-value),
 .acf-field-file.dropzone .acf-file-uploader:not(.has-value),
 .acf-field-file.dropzone .acf-image-uploader:not(.has-value) {
-  border-radius: 10px;
   padding: 20px;
-  border: 6px dashed #f1f1f1; }
+  border: 4px dashed #cccccc; }
 
 .acf-field-gallery.dropzone .acf-input,
 .acf-field-image.dropzone .acf-input,
@@ -33,3 +32,35 @@
 .acf-field-image.dropzone .uploader-window,
 .acf-field-file.dropzone .uploader-window {
   position: absolute; }
+
+.acf-field-gallery.dropzone .media-progress-label,
+.acf-field-image.dropzone .media-progress-label,
+.acf-field-file.dropzone .media-progress-label {
+  font-weight: bold;
+  text-align: center;
+  margin-top: auto; }
+
+.acf-field-gallery.dropzone .media-progress-bar-box,
+.acf-field-image.dropzone .media-progress-bar-box,
+.acf-field-file.dropzone .media-progress-bar-box {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(204, 204, 204, 0.75);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.acf-field-gallery.dropzone .media-progress-bar,
+.acf-field-image.dropzone .media-progress-bar,
+.acf-field-file.dropzone .media-progress-bar {
+  margin-bottom: auto; }

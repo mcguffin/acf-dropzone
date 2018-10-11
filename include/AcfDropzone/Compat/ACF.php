@@ -23,8 +23,55 @@ class ACF extends Core\PluginComponent {
 	protected function __construct() {
 		add_action( 'acf/enqueue_uploader', array( $this, 'enqueue_assets') );
 		add_action( 'print_media_templates', array( $this, 'print_media_templates' ) );
+
+		add_action( 'acf/render_field_settings/type=image',   array( $this, 'add_dropzone_option') );
+		add_action( 'acf/render_field_settings/type=file',    array( $this, 'add_dropzone_option') );
+		add_action( 'acf/render_field_settings/type=gallery', array( $this, 'add_dropzone_option') );
+
+		add_filter( 'acf/prepare_field/type=image',   array( $this, 'add_dropzone_class' ) );
+		add_filter( 'acf/prepare_field/type=file',    array( $this, 'add_dropzone_class' ) );
+		add_filter( 'acf/prepare_field/type=gallery', array( $this, 'add_dropzone_class' ) );
 	}
 
+	/**
+	 *	@action acf/render_field_settings/type=image
+	 *	@action acf/render_field_settings/type=file
+	 *	@action acf/render_field_settings/type=gallery
+	 */
+	public function add_dropzone_option( $field ) {
+
+		// save_other_choice
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Enable Dropzone','acf'),
+			'instructions'	=> '',
+			'name'			=> 'dropzone',
+			'type'			=> 'true_false',
+			'ui'			=> 1,
+			'message'		=> ''
+		));
+	}
+
+	/**
+	 *	@filter acf/prepare_field/type=image
+	 *	@filter acf/prepare_field/type=file
+	 *	@filter acf/prepare_field/type=gallery
+	 */
+	public function add_dropzone_class( $field ) {
+		$field = wp_parse_args( $field, array(
+			'dropzone'	=> 0,
+		));
+
+		if ( $field['dropzone'] ) {
+			$field['wrapper']['class'] .= ' dropzone';
+			$field['wrapper']['class'] = trim( $field['wrapper']['class'] );
+		}
+
+		return $field;
+	}
+
+	/**
+	 *	@action acf/enqueue_uploader
+	 */
 	public function enqueue_assets() {
 		$core = Core\Core::instance();
 

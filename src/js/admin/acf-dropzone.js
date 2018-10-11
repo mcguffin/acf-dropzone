@@ -23,14 +23,24 @@
 	// });
 	var Progress = Backbone.View.extend({
 		tagName:   'div',
-		className: 'media-progress-bar',
+		className: 'media-progress-bar-box',
 		render:function() {
+			this.$progress = $('<div />').addClass('media-progress-bar');
+			this.$label = $('<div />').addClass('media-progress-label');
 			this.$bar = $('<div />');
-			this.$el.append(this.$bar);
+			this.$el
+				.append( this.$label );
+			this.$progress
+				.append( this.$bar )
+				.appendTo( this.$el );
+
 			return this;
 		},
+		setLabel:function(label) {
+			this.$label.text(label);
+		},
 		setProgress:function( percent ) {
-			this.$bar.width(percent+'%');
+			this.$bar.width( ( percent )+'%');
 			return this;
 		}
 	});
@@ -51,7 +61,7 @@
 	var ACFDropzone = Backbone.View.extend({
 		initialize: function() {
 			this.notice = false;
-			this.progress = false
+			this.progress = false;
 			this.uploader = new wp.media.view.UploaderWindow({
 				controller: this,
 				uploader: {
@@ -59,17 +69,18 @@
 					container: this.el,
 				}
 			});
+
 			return this;
 		},
 		render:function() {
 			$(this.uploader.render().el).appendTo( this.el );
-
 			return this;
 		},
 		ready: function() {
 			this.trigger('activate')
 			this.uploader.ready();
 			//
+			this.uploader.uploader.uploader.bind('FilesAdded', this.filesAdded, this );
 			this.uploader.uploader.uploader.bind('BeforeUpload', this.fileBeforeUpload, this );
 			this.uploader.uploader.uploader.bind('UploadProgress', this.fileUploadProgress, this );
 			this.uploader.uploader.uploader.bind('FileUploaded', this.fileUploaded, this );
@@ -77,25 +88,30 @@
 
 			return this;
 		},
+		filesAdded: function( uploader, files ) {
+			this.total = files.length;
+			this.done = 0;
+		},
 		fileBeforeUpload: function( uploader, file ) {
 			!! this.notice && this.notice.remove();
+			this.addProgress();
+			this.progress.setLabel( _.escape(file.name) );
 			this.notice = false;
 		},
 		fileUploadProgress:function( uploader, file ) {
 			this.addProgress();
-			this.progress.setProgress(file.percent);
+			this.progress.setProgress( ( 100 * this.done + file.percent ) / this.total );
 		},
 		fileUploaded:function( uploader, file, response ) {
+			this.done++;
 			this.file = file;
 			this.removeProgress();
-			this.trigger('acf-dropzone-uploaded',file.attachment)
+			this.trigger('acf-dropzone-uploaded',file.attachment);
 		},
 		fileUploadError:function( uploader, error ) {
+			this.done++;
 			this.removeProgress();
-			// add error msg!
-//			!! this.file.attachment && this.file.attachment.destroy();
 			this.trigger( 'acf-dropzone-error', error );
-
 
 			this.notice = new Notice({
 				type:'error',
@@ -104,6 +120,7 @@
 			});
 			this.notice.render();
 			this.notice.$el.prependTo(this.el);
+			this.total--;
 		},
 
 		addProgress:function() {
@@ -132,31 +149,48 @@
 </div>
 */
 
-	$('.acf-field.dropzone').each(function(){
 
-		var self = this,
-			is_gallery = $(this).is('.acf-field-gallery'),
-			el,
-			dropzone;
-		if ( is_gallery ) {
-			el = $( this ).find('.acf-gallery-main').get(0)
-		} else {
-			el = $( this ).find('[data-uploader="wp"]').get(0);
-		}
+	function initFileDropzone( field ) {
+		var el = field.$('[data-uploader="wp"]').get(0),
+			field = field;
+
 		dropzone = new ACFDropzone({
 			el: el,
 		});
 		dropzone.render();
 		dropzone.ready();
 		dropzone.on('acf-dropzone-uploaded', function( attachment ){
-			if ( is_gallery ) {
-				acf.getField( $(self) ).appendAttachment( attachment );
-			} else {
-				acf.getField( $(self) ).render(attachment);
-			}
+			field.render(attachment);
 		});
-		dropzone.on('acf-dropzone-error', function( error ){
+	}
+
+	function initGalleryDropzone( field ) {
+		var el = field.$('.acf-gallery-main').get(0),
+			field = field;
+		dropzone = new ACFDropzone({
+			el: el,
 		});
-	});
+		dropzone.render();
+		dropzone.ready();
+		dropzone.on('acf-dropzone-uploaded', function( attachment ){
+
+			field.appendAttachment(
+				attachment,
+				field.get('insert') === 'prepend' ? 0 : undefined
+			);
+
+		});
+	}
+
+
+	acf.addAction( 'ready_field/type=image',   initFileDropzone );
+	acf.addAction( 'ready_field/type=file',    initFileDropzone );
+	acf.addAction( 'ready_field/type=gallery', initGalleryDropzone );
+
+	// created from repeater
+	acf.addAction( 'append_field/type=image',   initFileDropzone );
+	acf.addAction( 'append_field/type=file',    initFileDropzone );
+	acf.addAction( 'append_field/type=gallery', initGalleryDropzone );
+
 
 })(jQuery, acf_dropzone );
