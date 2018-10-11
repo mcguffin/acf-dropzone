@@ -5,6 +5,14 @@ Add drag and drop upload to ACF File Field, Image field and Gallery field.
 
 Requires at least ACF 5.6.
 
+Usage
+-----
+Enable the "Dropzone" option in the field settings.
+
+Status
+------
+This PLugin is currently in beta. Feel free to post issues and pull requests.
+
 Installation
 ------------
 
