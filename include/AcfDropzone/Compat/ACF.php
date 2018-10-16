@@ -77,7 +77,7 @@ class ACF extends Core\PluginComponent {
 
 		wp_register_style( 'acf-dropzone', $core->get_asset_url('css/admin/acf-dropzone.css'), array(), $core->get_version() );
 
-		wp_register_script( 'acf-dropzone', $core->get_asset_url('js/admin/acf-dropzone.js'), array(), $core->get_version() );
+		wp_register_script( 'acf-dropzone', $core->get_asset_url('js/admin/acf-dropzone.js'), array('acf-input'), $core->get_version() );
 		wp_localize_script( 'acf-dropzone', 'acf_dropzone', array(
 
 		) );
