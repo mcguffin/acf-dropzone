@@ -65,6 +65,11 @@
 .acf-field-file.dropzone .media-progress-bar {
   margin-bottom: auto; }
 
+.acf-field-gallery.dropzone .notice {
+  z-index: 1;
+  margin-top: 0;
+  margin-bottom: 5px; }
+
 .acf-field-image [data-uploader="wp"] > .hide-if-value,
 .acf-field-file [data-uploader="wp"] > .hide-if-value {
   text-align: center; }
