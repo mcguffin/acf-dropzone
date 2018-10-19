@@ -162,6 +162,10 @@
 			field = field,
 			info;
 
+		if ( ! field.$el.is('.dropzone') ) {
+			return;
+		}
+
 		el = field.$('[data-uploader="wp"]').get(0)
 
 		if ( ! el ) {
@@ -192,6 +196,11 @@
 	function initGalleryDropzone( field ) {
 		var el = field.$('.acf-gallery-main').get(0),
 			field = field;
+
+		if ( ! field.$el.is('.dropzone') ) {
+			return;
+		}
+
 		dropzone = new ACFDropzone({
 			el: el,
 		});
