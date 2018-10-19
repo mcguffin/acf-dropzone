@@ -14,12 +14,12 @@
 /* Alerts/Notifications/Flags */
 /* Social Icons */
 /* Misc/CPT */
-.acf-field-gallery.dropzone .acf-file-uploader:not(.has-value),
-.acf-field-gallery.dropzone .acf-image-uploader:not(.has-value),
-.acf-field-image.dropzone .acf-file-uploader:not(.has-value),
-.acf-field-image.dropzone .acf-image-uploader:not(.has-value),
-.acf-field-file.dropzone .acf-file-uploader:not(.has-value),
-.acf-field-file.dropzone .acf-image-uploader:not(.has-value) {
+.acf-field-gallery.dropzone .acf-file-uploader .hide-if-value,
+.acf-field-gallery.dropzone .acf-image-uploader .hide-if-value,
+.acf-field-image.dropzone .acf-file-uploader .hide-if-value,
+.acf-field-image.dropzone .acf-image-uploader .hide-if-value,
+.acf-field-file.dropzone .acf-file-uploader .hide-if-value,
+.acf-field-file.dropzone .acf-image-uploader .hide-if-value {
   padding: 20px;
   border: 4px dashed #cccccc; }
 
@@ -64,6 +64,14 @@
 .acf-field-image.dropzone .media-progress-bar,
 .acf-field-file.dropzone .media-progress-bar {
   margin-bottom: auto; }
+
+.acf-field-gallery.dropzone .uploader-window h1, .acf-field-gallery.dropzone .uploader-window h3,
+.acf-field-image.dropzone .uploader-window h1,
+.acf-field-image.dropzone .uploader-window h3,
+.acf-field-file.dropzone .uploader-window h1,
+.acf-field-file.dropzone .uploader-window h3 {
+  margin: 0;
+  font-size: 25px; }
 
 .acf-field-gallery.dropzone .notice {
   z-index: 1;

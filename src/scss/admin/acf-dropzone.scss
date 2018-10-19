@@ -8,7 +8,7 @@
 	&.dropzone {
 		.acf-file-uploader,
 		.acf-image-uploader {
-			&:not(.has-value) {
+			.hide-if-value {
 				padding:20px;
 				border:4px dashed $wp-gray-dark;
 			}
@@ -37,6 +37,12 @@
 		}
 		.media-progress-bar {
 			margin-bottom:auto;
+		}
+		.uploader-window {
+			h1, h3 {
+				margin:0;
+				font-size:25px;
+			}
 		}
 	}
 }
