@@ -43,3 +43,4 @@ ToOo
  - [x] Gallery: Prepend/Append setting
  - [x] Style: progress bar
  - [x] Test in repeater
+ - [ ] Check image size and file extension restrictions before upload
