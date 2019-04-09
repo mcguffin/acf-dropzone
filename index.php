@@ -5,7 +5,7 @@ Plugin Name: ACF Dropzone
 Plugin URI: http://wordpress.org/
 Description: Enter description here.
 Author: Jörn Lund
-Version: 0.1.4
+Version: 0.1.5
 Author URI: https://github.com/mcguffin
 License: GPL3
 Github Repository: mcguffin/acf-dropzone
