@@ -1,61 +1,47 @@
 === ACF Dropzone ===
-Contributors: #### Your wordpress.org Username ####
-Donate link: #### donate link ####
-Tags: #### donate link ####
-Requires at least: 3.8
-Requires PHP: 5.3
-Tested up to: 4.9
+Contributors: podpirate
+Donate link: https://www.msf.org/donate
+Tags: drag-drop acf file upload
+Requires at least: 5.0.0
+Requires PHP: 5.6
+Tested up to: 5.2.2
 Stable tag: 0.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-#### Short Description ####
+Drag and drop file upload for ACF-Fields.
 
 == Description ==
 
-#### Long Description ####
+Enable Drag and Drop Upload in [ACF](https://www.advancedcustomfields.com/)’s Image, File and Gallery Field.
 
+## Supported Fields
 
+- Image Field
+- File Field
+- gallery Field
+
+## Usage
+Check "Enable Dropzone" in the ACF Field Editor.
+
+## Development
+Head over to the source code [on Github](https://github.com/mcguffin/acf-dropzone).
 
 == Installation ==
 
-Follow the standard [WordPress plugin installation procedere](http://codex.wordpress.org/Managing_Plugins).
+Just follow the [Automatic Plugin Installation](https://wordpress.org/support/article/managing-plugins/#automatic-plugin-installation) procedere.
 
 == Frequently asked questions ==
 
 = I found a bug. Where should I post it? =
 
-You can can either go into the Support forum, or in the [ACF Dropzone Repository](https://github.com//acf-dropzone).
+Please use the issues section in the [GitHub-Repository](https://github.com/mcguffin/acf-dropzone/issues).
+
+I will most likely not maintain the forum support forum on wordpress.org. Anyway, other users might have an answer for you, so it's worth a shot.
 
 = I'd like to suggest a feature. Where should I post it? =
 
-I personally prefer GitHub. The plugin code is here: [GitHub](https://github.com//acf-dropzone)
-(See above as well.)
-
-= I want to use the latest files. How can I do this? =
-
-Use the GitHub Repo rather than the WordPress Plugin. Do as follows:
-
-1. If you haven't done so: [Install git](https://help.github.com/articles/set-up-git)
-
-2. in the console cd into Your 'wp-content/plugins' directory
-
-3. type `git clone git@github.com:/acf-dropzone.git`
-
-4. If you want to update to the latest files (be careful, might be untested with your WP-Version) type `git pull`.
-
-= I found a bug and fixed it. How can I let You know? =
-
-Either post it on the [GitHub-repo](https://github.com//acf-dropzone) or—if you cloned the repository—send me a pull request.
-
-= Will you accept translations? =
-
-Yep sure! (And a warm thankyou in advance.) It might take some time until your localization
-will appear in an official plugin release, and it is not unlikely that I will have added
-or removed some strings in the meantime.
-
-As soon as there is a [public centralized repository for WordPress plugin translations](https://translate.wordpress.org/projects/wp-plugins)
-I will migrate all the translation stuff there.
+Please post an issue in the [GitHub-Repository](https://github.com/mcguffin/acf-dropzone/issues)
 
 
 == Screenshots ==
@@ -65,6 +51,10 @@ I will migrate all the translation stuff there.
 3. Dragging over ...
 4. ... uploading
 5. Dragging over a Gallery field
+
+== Upgrade Notice ==
+
+On the whole upgrading is always a good idea.
 
 == Changelog ==
 
