@@ -42,7 +42,7 @@ class ACF extends Core\PluginComponent {
 
 		// save_other_choice
 		acf_render_field_setting( $field, array(
-			'label'			=> __('Enable Dropzone','acf'),
+			'label'			=> __('Enable Dropzone','acf-dropzone'),
 			'instructions'	=> '',
 			'name'			=> 'dropzone',
 			'type'			=> 'true_false',
@@ -122,12 +122,12 @@ class ACF extends Core\PluginComponent {
 		<script type="text/html" id="tmpl-acf-dropzone-notice">
 			<p><# if ( data.bold ) { #><strong>{{data.bold}}</strong>: <# } #>{{data.message}}</p>
 			<button type="button" class="notice-dismiss">
-				<span class="screen-reader-text"><?php _e('Dismiss this notice.') ?></span>
+				<span class="screen-reader-text"><?php _e('Dismiss this notice.','acf-dropzone') ?></span>
 			</button>
 		</script>
 		<script type="text/html" id="tmpl-acf-dropzone-info">
-			<p class="drag-drop-info"><?php _e('Drop files here') ?></p>
-			<p><?php _e('or') ?></p>
+			<p class="drag-drop-info"><?php _e('Drop files here','acf-dropzone') ?></p>
+			<p><?php _e('or','acf-dropzone') ?></p>
 		</script>
 		<?php
 

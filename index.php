@@ -3,7 +3,7 @@
 /*
 Plugin Name: ACF Dropzone
 Plugin URI: https://github.com/mcguffin/acf-dropzone
-Description: Enter description here.
+Description: Drag and drop file upload for ACF-Fields.
 Author: Jörn Lund
 Version: 0.1.5
 Author URI: https://github.com/mcguffin
@@ -19,7 +19,7 @@ Domain Path: /languages/
 /*  Copyright 2018 Jörn Lund
 
     This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as
+    it under the terms of the GNU General Public License, version 3, as
     published by the Free Software Foundation.
 
     This program is distributed in the hope that it will be useful,

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-07-03T08:19:27+00:00\n"
+"POT-Creation-Date: 2019-07-03T10:07:14+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.1.0\n"
 "X-Domain: acf-dropzone\n"
@@ -23,7 +23,7 @@ msgid "https://github.com/mcguffin/acf-dropzone"
 msgstr ""
 
 #. Description of the plugin
-msgid "Enter description here."
+msgid "Drag and drop file upload for ACF-Fields."
 msgstr ""
 
 #. Author of the plugin
@@ -32,4 +32,20 @@ msgstr ""
 
 #. Author URI of the plugin
 msgid "https://github.com/mcguffin"
+msgstr ""
+
+#: include/AcfDropzone/Compat/ACF.php:47
+msgid "Enable Dropzone"
+msgstr ""
+
+#: include/AcfDropzone/Compat/ACF.php:129
+msgid "Dismiss this notice."
+msgstr ""
+
+#: include/AcfDropzone/Compat/ACF.php:133
+msgid "Drop files here"
+msgstr ""
+
+#: include/AcfDropzone/Compat/ACF.php:134
+msgid "or"
 msgstr ""
