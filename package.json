@@ -6,14 +6,14 @@
   "scripts": {
     "dev": "gulp dev",
     "build": "gulp build && npm run i18n",
-    "release": "npm run release:build && npm run release:github",
+    "release": "npm run release:build && npm run release:git && npm run release:github",
     "release:build": "npm run i18n && node ./src/run/release.js",
     "release:git": "VERSION=$(node -e 'console.log(require(\"./package.json\").version)') && git add . && git commit -m \"Release ${VERSION}\"",
     "release:github": "node ./src/run/release-github.js",
     "release:wporg": "node ./src/run/release-wporg.js",
     "i18n": "wp i18n make-pot . languages/acf-dropzone.pot --domain=acf-dropzone",
     "package:wporg": "cp ./.wporg/screenshot-*.png . && git add . && git commit -m \"tmp\" && git archive --format=zip --prefix=acf-dropzone/ --output=../acf-dropzone.zip --worktree-attributes HEAD && git reset --hard HEAD~",
-    "rollback":"git reset --hard HEAD~ && git push origin +master"
+    "rollback": "git reset --hard HEAD~ && git push origin +master"
   },
   "repository": {
     "type": "git",
@@ -38,6 +38,8 @@
     "gulp-sass": "*",
     "gulp-sourcemaps": "*",
     "gulp-uglify": "*",
-    "gulp-util": "*"
-  }
+    "gulp-util": "*",
+    "simple-git": "^1.118.0"
+  },
+  "dependencies": {}
 }
