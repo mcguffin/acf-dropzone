@@ -4,6 +4,8 @@ const wp = require('./lib/wp-release.js');
 
 //
 let svn_user = null;
+let svn_version;
+let commit_message;
 
 const contributors = wp.read_header_tag('readme.txt','Contributors').split(',');
 
@@ -39,13 +41,17 @@ console.log('...done')
 
 console.log('Fetch SVN')
 exec.execSync(`svn checkout --depth immediates "${svn_url}" "${svn_dir}"`)
-exec.execSync('svn update --set-depth infinity assets',{
+console.log(exec.execSync('svn update --set-depth infinity assets',{
 	cwd:svn_dir,
-})
-exec.execSync('svn update --set-depth infinity trunk',{
+	encoding:'utf8',
+}))
+console.log(exec.execSync('svn update --set-depth infinity trunk',{
 	cwd:svn_dir,
-})
+	encoding:'utf8',
+}))
 console.log('...done')
+
+svn_version = wp.read_header_tag(`${svn_dir}/trunk/readme.txt`,'Stable tag')
 
 console.log('Update SVN')
 exec.execSync(`rsync -rc "${git_dir}/" ${svn_dir}/trunk/ --delete`)
@@ -57,24 +63,32 @@ exec.execSync('svn add . --force',{
 exec.execSync('svn status | grep \'^!\' | sed \'s/! *//\' | xargs -I% svn rm %',{
 	cwd:'./'+svn_dir,
 })
+console.log('...done')
 
 //
-exec.execSync(`svn cp "trunk" "tags/${package.version}"`,{
-	cwd:svn_dir,
-})
-console.log('...done')
+if ( svn_version !== package.version ) {
+	console.log( `Create SVN Tag: tags/${package.version}` )
+	exec.execSync(`svn cp "trunk" "tags/${package.version}"`,{
+		cwd:svn_dir,
+	})
+	commit_message = `Release ${package.version}`;
+	console.log('...done')
+} else {
+	commit_message = `Update trunk`;
+}
 
 console.log('SVN Status:')
 console.log(exec.execSync('svn status',{
 	encoding:'utf8',
 	cwd:svn_dir,
-}))
+}));
 
 
-console.log('Committing')
-exec.execSync(`svn commit -m "Release ${package.version}" --non-interactive`,{
+console.log('Committing...')
+console.log(exec.execSync(`svn commit -m "${commit_message}" --non-interactive`,{
+	encoding:'utf8',
 	cwd:svn_dir,
-})
+}))
 console.log('...done')
 
 
