@@ -11,7 +11,9 @@
     "release:git": "VERSION=$(node -e 'console.log(require(\"./package.json\").version)') && git add . && git commit -m \"Release ${VERSION}\"",
     "release:github": "node ./src/run/release-github.js",
     "release:wporg": "node ./src/run/release-wporg.js",
-    "i18n": "wp i18n make-pot . languages/acf-dropzone.pot --domain=acf-dropzone"
+    "i18n": "wp i18n make-pot . languages/acf-dropzone.pot --domain=acf-dropzone",
+    "package:wporg": "cp ./.wporg/screenshot-*.png . && git add . && git commit -m \"tmp\" && git archive --format=zip --prefix=acf-dropzone/ --output=../acf-dropzone.zip --worktree-attributes HEAD && git reset --hard HEAD~",
+    "rollback":"git reset --hard HEAD~ && git push origin +master"
   },
   "repository": {
     "type": "git",
