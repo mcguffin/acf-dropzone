@@ -217,7 +217,7 @@
 		dropzone.render();
 		dropzone.ready();
 		dropzone.on('acf-dropzone-uploaded', function( attachment, i ){
-			if ( parent.get('type') === 'repeater' && i > 0 ) {
+			if ( parent && parent.get('type') === 'repeater' && i > 0 ) {
 				field.append( attachment, parent );
 			} else {
 				field.render(attachment);
