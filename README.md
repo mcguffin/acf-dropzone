@@ -28,13 +28,4 @@ Installation
  - $ `git clone git@github.com:mcguffin/acf-dropzone.git`
  - $ `cd acf-dropzone`
  - $ `npm install`
- - $ `gulp`
-
-ToOo
-====
-
- - [x] Gallery: test with multiple
- - [x] Gallery: Prepend/Append setting
- - [x] Style: progress bar
- - [x] Test in repeater
- - [ ] Check image size and file extension restrictions before upload
+ - $ `npm run dev`
