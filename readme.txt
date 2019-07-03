@@ -60,6 +60,12 @@ I will migrate all the translation stuff there.
 
 == Screenshots ==
 
+1. ACF Field configuration
+2. Some ACF Fields with dropzone enabled
+3. Dragging over ...
+4. ... uploading
+5. Dragging over a Gallery field
+
 == Changelog ==
 
 = 1.0.0 =
