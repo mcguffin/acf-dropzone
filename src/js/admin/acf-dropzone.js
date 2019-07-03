@@ -115,10 +115,12 @@
 			this.progress.setProgress( ( 100 * this.done + file.percent ) / this.total );
 		},
 		fileUploaded:function( uploader, file, response ) {
-			this.done++;
 			this.file = file;
-			this.removeProgress();
-			this.trigger('acf-dropzone-uploaded',file.attachment);
+			this.trigger('acf-dropzone-uploaded',file.attachment,this.done);
+			this.done++;
+			if (this.total === this.done ) {
+				this.removeProgress();
+			}
 		},
 		fileUploadError:function( uploader, error ) {
 			this.done++;
@@ -165,11 +167,14 @@
 	function initFileDropzone( field ) {
 		var el,
 			field = field,
+			parent,
 			info;
 
 		if ( ! field.$el.is('.dropzone') ) {
 			return;
 		}
+
+		parent = field.parent();
 
 		el = field.$('[data-uploader="wp"]').get(0)
 
@@ -193,8 +198,12 @@
 		});
 		dropzone.render();
 		dropzone.ready();
-		dropzone.on('acf-dropzone-uploaded', function( attachment ){
-			field.render(attachment);
+		dropzone.on('acf-dropzone-uploaded', function( attachment, i ){
+			if ( parent.get('type') === 'repeater' && i > 0 ) {
+				field.append( attachment, parent );
+			} else {
+				field.render(attachment);				
+			}
 		});
 	}
 
