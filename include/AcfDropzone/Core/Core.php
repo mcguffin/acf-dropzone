@@ -21,22 +21,10 @@ class Core extends Plugin {
 	protected function __construct() {
 
 		add_action( 'plugins_loaded' , array( $this , 'init_compat' ), 0 );
-		add_action( 'init' , array( $this , 'init' ) );
-
-		add_action( 'wp_enqueue_scripts' , array( $this , 'wp_enqueue_style' ) );
 
 		$args = func_get_args();
 		parent::__construct( ...$args );
 	}
-
-	/**
-	 *	Load frontend styles and scripts
-	 *
-	 *	@action wp_enqueue_scripts
-	 */
-	public function wp_enqueue_style() {
-	}
-
 
 	/**
 	 *	Load Compatibility classes
@@ -47,15 +35,6 @@ class Core extends Plugin {
 		if ( function_exists('\acf') && version_compare( acf()->version,'5.0.0','>=') ) {
 			Compat\ACF::instance();
 		}
-	}
-
-
-	/**
-	 *	Init hook.
-	 *
-	 *  @action init
-	 */
-	public function init() {
 	}
 
 	/**

@@ -34,6 +34,8 @@ class ACF extends Core\PluginComponent {
 	}
 
 	/**
+	 *	Add the Dropzone option to acf fields
+	 *
 	 *	@action acf/render_field_settings/type=image
 	 *	@action acf/render_field_settings/type=file
 	 *	@action acf/render_field_settings/type=gallery
@@ -52,6 +54,8 @@ class ACF extends Core\PluginComponent {
 	}
 
 	/**
+	 *	Add the Dropzone css class to field
+	 *
 	 *	@filter acf/prepare_field/type=image
 	 *	@filter acf/prepare_field/type=file
 	 *	@filter acf/prepare_field/type=gallery
