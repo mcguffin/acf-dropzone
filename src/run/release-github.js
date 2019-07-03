@@ -1,5 +1,5 @@
 /*
-Set version in files
+Builds a github release from current version number
 */
 
 const wp = require('./lib/wp-release.js');

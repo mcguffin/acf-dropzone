@@ -1,5 +1,5 @@
 /*
-Set version in files
+Set version numbers in all relevant files, commits and pushes
 */
 
 // versioning

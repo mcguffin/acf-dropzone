@@ -1,14 +1,13 @@
 {
   "name": "acf-dropzone",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Drag and drop upload for ACF Fields",
   "private": true,
   "scripts": {
     "dev": "gulp dev",
     "build": "gulp build && npm run i18n",
-    "release": "npm run release:build && npm run release:git && npm run release:github",
+    "release": "npm run release:build && npm run release:github",
     "release:build": "npm run i18n && node ./src/run/release.js",
-    "release:git": "VERSION=$(node -e 'console.log(require(\"./package.json\").version)') && git add . && git commit -m \"Release ${VERSION}\"",
     "release:github": "node ./src/run/release-github.js",
     "release:wporg": "node ./src/run/release-wporg.js",
     "i18n": "wp i18n make-pot . languages/acf-dropzone.pot --domain=acf-dropzone",
