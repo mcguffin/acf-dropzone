@@ -15,6 +15,11 @@
   "bugs": {
     "url": "https://github.com//acf-dropzone/issues"
   },
+  "browserslist": [
+    "last 3 versions",
+    "> 0.25%",
+    "IE 10"
+  ],
   "homepage": "https://github.com//acf-dropzone#readme",
   "devDependencies": {
     "gulp": "^4.0.0",

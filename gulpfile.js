@@ -12,9 +12,7 @@ function do_scss( src ) {
 	return gulp.src( './src/scss/' + src + '.scss' )
 		.pipe( sourcemaps.init() )
 		.pipe( sass( { outputStyle: 'nested' } ).on('error', sass.logError) )
-		.pipe( autoprefixer({
-			browsers:['last 2 versions']
-		}) )
+		.pipe( autoprefixer() )
 		.pipe( gulp.dest( './css/' + dir ) )
         .pipe( sass( { outputStyle: 'compressed' } ).on('error', sass.logError) )
 		.pipe( rename( { suffix: '.min' } ) )
