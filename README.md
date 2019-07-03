@@ -13,7 +13,7 @@ Enable the "Dropzone" option in the field settings.
 
 Status
 ------
-This Plugin is currently in beta stadium, so there might be some tweaks and itches. Feel free to post your issues and pull requests.
+This Plugin is currently being reviewed by the awesome WordPress plugin people. It will hopefully be available [here](https://wordpress.org/plugins/acf-dropzone) soon!
 
 
 Installation
