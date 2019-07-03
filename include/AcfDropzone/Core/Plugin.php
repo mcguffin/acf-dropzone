@@ -17,7 +17,7 @@ use AcfDropzone\Compat;
 
 class Plugin extends PluginComponent {
 
-	/** @var string plugin main file */
+	/** @var string plugin main file abspath */
 	private $plugin_file;
 
 	/** @var array metadata from plugin file */
@@ -25,7 +25,6 @@ class Plugin extends PluginComponent {
 
 	/** @var string plugin components which might need upgrade */
 	private static $components = array(
-		'AcfDropzone\Compat\ACF',
 	);
 
 	/**
