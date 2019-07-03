@@ -66,4 +66,14 @@ gulp.task('watch', function() {
 	gulp.watch('./src/scss/**/*.scss',gulp.parallel('scss') );
 	gulp.watch('./src/js/**/*.js',gulp.parallel( 'js') );
 });
-gulp.task('default', gulp.parallel('build','watch'));
+
+gulp.task( 'dev', gulp.series('build', 'watch') );
+
+gulp.task('default',cb => {
+	console.log('run either `gulp build` or `gulp dev`');
+	cb();
+});
+
+module.exports = {
+	build:gulp.series('build')
+}

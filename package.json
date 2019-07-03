@@ -4,7 +4,13 @@
   "description": "Plugin description",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "gulp dev",
+    "build": "gulp build && npm run i18n",
+    "release": "npm run release:build && npm run release:github",
+    "release:build": "npm run i18n && node ./src/run/release.js",
+    "release:git": "VERSION=$(node -e 'console.log(require(\"./package.json\").version)') && git add . && git commit -m \"Release ${VERSION}\"",
+    "release:github": "node ./src/run/release-github.js",
+    "release:wporg": "node ./src/run/release-wporg.js"
   },
   "repository": {
     "type": "git",
