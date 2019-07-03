@@ -55,13 +55,18 @@
   margin: 0;
   font-size: 25px; }
 
+.dropzone.acf-field-gallery .acf-gallery-main {
+  z-index: 100; }
+
 .dropzone.acf-field-gallery .notice {
   z-index: 1;
   margin-top: 0;
   margin-bottom: 5px; }
 
-.dropzone.acf-field-image [data-uploader="wp"] > .hide-if-value, .dropzone.acf-field-file [data-uploader="wp"] > .hide-if-value {
-  text-align: center; }
+.dropzone.acf-field-image [data-uploader="wp"], .dropzone.acf-field-file [data-uploader="wp"] {
+  z-index: 100; }
+  .dropzone.acf-field-image [data-uploader="wp"] > .hide-if-value, .dropzone.acf-field-file [data-uploader="wp"] > .hide-if-value {
+    text-align: center; }
 
 .dropzone.acf-field-image .acf-dropzone-info, .dropzone.acf-field-file .acf-dropzone-info {
   color: #b4b9be;

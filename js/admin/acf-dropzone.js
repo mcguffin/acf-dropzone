@@ -84,6 +84,11 @@
 			return this;
 		},
 		ready: function() {
+			// prevent block editor file drop
+			this.$el.on('drop dragenter dragleave dragover',function(e){
+				e.stopPropagation()
+			});
+
 			this.trigger('activate')
 			this.uploader.ready();
 			//
