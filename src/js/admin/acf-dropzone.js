@@ -84,9 +84,15 @@
 			return this;
 		},
 		ready: function() {
-			// prevent block editor file drop
-			this.$el.on('drop dragenter dragleave dragover',function(e){
+			var self = this;
+			this.$el
+			.on('drop dragenter dragleave dragover',function(e){
+				// prevent block editor file drop
 				e.stopPropagation()
+			})
+			.on('drop',function(e){
+				// reset error
+				self.removeNotice();
 			});
 
 			this.trigger('activate')
@@ -101,14 +107,14 @@
 			return this;
 		},
 		filesAdded: function( uploader, files ) {
+			//
 			this.total = files.length;
 			this.done = 0;
+			//this.notice = false;
 		},
 		fileBeforeUpload: function( uploader, file ) {
-			!! this.notice && this.notice.remove();
 			this.addProgress();
 			this.progress.setLabel( _.escape(file.name) );
-			this.notice = false;
 		},
 		fileUploadProgress:function( uploader, file ) {
 			this.addProgress();
@@ -124,25 +130,24 @@
 		},
 		fileUploadError:function( uploader, error ) {
 			this.done++;
-			this.removeProgress();
+			if (this.total === this.done ) {
+				this.removeProgress();
+			}
 			this.trigger( 'acf-dropzone-error', error );
 
-			this.notice = new Notice({
+			this.addNotice({
 				type:'error',
 				bold: _.escape(error.file.name),
 				message: error.message
 			});
-			this.notice.render();
-			this.notice.$el.prependTo(this.el);
-			this.total--;
 		},
-
 		addProgress:function() {
 			if ( this.progress ) {
 				return this;
 			}
 			this.progress = new Progress();
 			this.progress.render().$el.appendTo(this.el);
+			return this;
 		},
 		removeProgress:function( percent ) {
 			if ( ! this.progress ) {
@@ -153,6 +158,19 @@
 			this.progress = false;
 			return this;
 		},
+		addNotice:function(options) {
+			this.notice = new Notice(options);
+			this.notice.render();
+			this.notice.$el.prependTo(this.el);
+			return this;
+		},
+		removeNotice:function(options) {
+			if ( !! this.notice ) {
+				this.notice.remove();
+				this.notice = false;
+			}
+			return this;
+		}
 	});
 /*
 <div id="message" class="notice is-dismissible">
@@ -202,7 +220,7 @@
 			if ( parent.get('type') === 'repeater' && i > 0 ) {
 				field.append( attachment, parent );
 			} else {
-				field.render(attachment);				
+				field.render(attachment);
 			}
 		});
 	}
