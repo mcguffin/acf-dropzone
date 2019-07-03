@@ -15,14 +15,14 @@ if ( ! defined('ABSPATH') ) {
 use AcfDropzone\Core;
 
 
-class ACF extends Core\PluginComponent {
+class ACF extends Core\Singleton {
 
 	/**
 	 *	@inheritdoc
 	 */
 	protected function __construct() {
+
 		add_action( 'acf/enqueue_uploader', array( $this, 'enqueue_assets') );
-		add_action( 'print_media_templates', array( $this, 'print_media_templates' ) );
 
 		add_action( 'acf/render_field_settings/type=image',   array( $this, 'add_dropzone_option') );
 		add_action( 'acf/render_field_settings/type=file',    array( $this, 'add_dropzone_option') );
@@ -78,6 +78,7 @@ class ACF extends Core\PluginComponent {
 	 */
 	public function enqueue_assets() {
 		$core = Core\Core::instance();
+		add_action( 'print_media_templates', array( $this, 'print_media_templates' ) );
 
 		wp_register_style( 'acf-dropzone', $core->get_asset_url('css/admin/acf-dropzone.css'), array(), $core->get_version() );
 
@@ -89,33 +90,6 @@ class ACF extends Core\PluginComponent {
 		wp_enqueue_script('acf-dropzone');
 		wp_enqueue_style('acf-dropzone');
 
-	}
-
-	/**
-	 *	@inheritdoc
-	 */
-	 public function activate(){
-
-	 }
-
-	 /**
-	  *	@inheritdoc
-	  */
-	 public function deactivate(){
-
-	 }
-
-	 /**
-	  *	@inheritdoc
-	  */
-	 public static function uninstall() {
-		 // remove content and settings
-	 }
-
-	/**
- 	 *	@inheritdoc
-	 */
-	public function upgrade( $new_version, $old_version ) {
 	}
 
 	/**
@@ -134,8 +108,6 @@ class ACF extends Core\PluginComponent {
 			<p><?php _e('or','acf-dropzone') ?></p>
 		</script>
 		<?php
-
-
 
 	}
 
