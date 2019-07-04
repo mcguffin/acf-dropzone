@@ -26,8 +26,13 @@ Installation
 
 ### Production
 
-In wp-admin go to *Plugins* > *Add new*. Search for `acf-dropzone`.
+#### In WP Admin
+Just follow the [Automatic Plugin Installation](https://wordpress.org/support/article/managing-plugins/#automatic-plugin-installation) procedere.
 
+#### WP-CLI
+```
+$ wp plugin install --activate acf-dropzone
+```
 
 ### Development
  - cd into your plugin directory
