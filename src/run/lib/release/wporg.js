@@ -82,9 +82,7 @@ module.exports = ( dry = false ) => {
 				cwd:svn_dir,
 			})
 			commit_message = `Release ${package.version}`;
-			console.log('...done')
-		} else if ( false === svn_version) {
-			commit_message = `Initial release`;
+			console.log('...done');
 		} else {
 			commit_message = `Update trunk`;
 		}
@@ -98,10 +96,10 @@ module.exports = ( dry = false ) => {
 
 		if ( ! dry ) {
 			console.log('WPORG Committing...')
-			// console.log(exec.execSync(`svn commit -m "${commit_message}" --non-interactive`,{
-			// 	encoding:'utf8',
-			// 	cwd:svn_dir,
-			// }))
+			console.log(exec.execSync(`svn commit -m "${commit_message}" --non-interactive`,{
+				encoding:'utf8',
+				cwd:svn_dir,
+			}))
 			console.log('...done')
 
 			console.log('WPORG Cleaning up')
