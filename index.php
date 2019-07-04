@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: ACF Dropzone
-Plugin URI: https://github.com/mcguffin/acf-dropzone
+Plugin URI: https://wordpress.org/plugins/acf-dropzone/
 Description: Drag and drop file upload for ACF-Fields.
 Author: Jörn Lund
 Version: 1.0.0
