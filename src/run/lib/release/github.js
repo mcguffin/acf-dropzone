@@ -10,7 +10,6 @@ const exec = require('child_process');
 const https = require('https');
 
 module.exports = ( dry = false ) => {
-<<<<<<< HEAD
 	return new Promise( ( resolve, reject ) => {
 		const package = require('../../../../package.json'); // relative to this dir ...
 
@@ -37,59 +36,6 @@ module.exports = ( dry = false ) => {
 		}
 
 		gitInst.exec(() => {
-=======
-	const package = require('../../../../package.json'); // relative to this dir ...
-
-	let branch;
-	let repo;
-	let token;
-
-	const make_remote_release = (url,data,token) => {
-
-		return new Promise( resolve => {
-
-			let resp_data = '';
-			let req = https.request( url, {
-				// host: 'api.github.com',
-				// port: 443,
-				// path: `repos/${repo}/releases`,
-				method: 'POST',
-				headers: {
-	//				'Authorization' : 'token ${token}',
-					'User-Agent' : 'Nodejs'
-				}
-			}, resp => {
-				resp.setEncoding('utf8');
-				resp.on('data',data => {
-					resp_data += data;
-				});
-				resp.on('end',() => {
-					resolve( JSON.parse(resp_data) );
-				})
-			});
-			req.write( JSON.stringify( data, null ) )
-			req.end()
-
-		}, err => {
-			throw(err);
-		} )
-	}
-
-	git
-		.listRemote(['--get-url'], (err,res) => {
-			repo = res.match(/^git@github\.com:(.+)\.git/s)[1];
-		})
-		.branch( (err,res) => {
-			branch = res.current;
-		})
-		.exec( () => {
-			//
-			let whoami = exec.execSync('whoami',{encoding:'utf8'}).replace(/\n$/,'');
-			token = exec.execSync(`security find-generic-password -a ${whoami} -s GithubAccessToken -w`,{encoding:'utf8'}).replace(/\n$/,'');
-		} )
-		.push()
-		.exec(() => {
->>>>>>> b4e82d0261392278b42a8f468926777362d9e4e6
 			const data = {
 				version:		package.version,
 				branch:			branch,
@@ -111,13 +57,13 @@ Requires PHP: ${data.require_php}`,
 				prerelease:			false
 			}
 			const username = repo.split('/')[0];
-<<<<<<< HEAD
 			const api_url = `https://${username}:${token}@api.github.com/repos/${repo}/releases`;
 			let resp_data = '';
 
 			if ( dry ) {
 				console.log(api_url);
 				console.log(req_data);
+				resolve();
 			} else {
 
 
@@ -152,17 +98,4 @@ Requires PHP: ${data.require_php}`,
 
 	} );
 
-=======
-			const api_url = `https://${username}:${token}@api.github.com/repos/${repo}/releases`
-			if ( dry ) {
-				console.log('Send Request: ' + api_url );
-				console.log('Request Data:');
-				console.log(req_data);
-			} else {
-				let resp_data = make_remote_release( api_url, req_data, token )
-					.then(console.log)
-			}
-		})
-
->>>>>>> b4e82d0261392278b42a8f468926777362d9e4e6
 }

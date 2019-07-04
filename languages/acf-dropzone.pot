@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-07-03T11:12:19+00:00\n"
+"POT-Creation-Date: 2019-07-04T10:23:02+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.1.0\n"
 "X-Domain: acf-dropzone\n"
@@ -35,17 +35,21 @@ msgid "https://github.com/mcguffin"
 msgstr ""
 
 #: include/AcfDropzone/Compat/ACF.php:47
+#: tmp/git/include/AcfDropzone/Compat/ACF.php:47
 msgid "Enable Dropzone"
 msgstr ""
 
 #: include/AcfDropzone/Compat/ACF.php:103
+#: tmp/git/include/AcfDropzone/Compat/ACF.php:103
 msgid "Dismiss this notice."
 msgstr ""
 
 #: include/AcfDropzone/Compat/ACF.php:107
+#: tmp/git/include/AcfDropzone/Compat/ACF.php:107
 msgid "Drop files here"
 msgstr ""
 
 #: include/AcfDropzone/Compat/ACF.php:108
+#: tmp/git/include/AcfDropzone/Compat/ACF.php:108
 msgid "or"
 msgstr ""
