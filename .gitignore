@@ -11,3 +11,4 @@
 .svnignore
 .sass-cache
 node_modules/
+tmp/
