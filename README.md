@@ -1,27 +1,33 @@
 ACF Dropzone
 ============
 
+This is the official github repository of the [ACF Dropzone](https://wordpress.org/plugins/acf-dropzone/) plugin.
+
+About
+-----
+
 Add drag and drop upload to ACF File Field, Image field and Gallery field.
 
-Requires at least ACF 5.6.
-
+Requires at least WP 5.0 and ACF 5.6.
 
 Usage
 -----
 Enable the "Dropzone" option in the field settings.
 
+![Dropzone Setting](.wporg/screenshot-1.png)
 
-Status
-------
-This Plugin is currently being reviewed by the awesome WordPress plugin people. It will hopefully be available [here](https://wordpress.org/plugins/acf-dropzone) soon!
+Enjoy your new dropping experience!
+
+![Happy Dropping](.wporg/screenshot-2.png)
 
 
 Installation
 ------------
 
-### Production (using Github Updater)
- - Install and configure [Andy Fragen's GitHub Updater](https://github.com/afragen/github-updater) first.
- - In WP Admin go to Settings / GitHub Updater / Install Plugin. Enter `mcguffin/acf-dropzone` as a Plugin-URI.
+### Production
+
+In wp-admin go to *Plugins* > *Add new*. Search for `acf-dropzone`.
+
 
 ### Development
  - cd into your plugin directory
