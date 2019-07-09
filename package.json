@@ -38,8 +38,31 @@
     "gulp-sass": "*",
     "gulp-sourcemaps": "*",
     "gulp-uglify": "*",
-    "gulp-util": "*",
-    "simple-git": "^1.118.0"
+    "gulp-util": "*"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "wporg": {
+    "type": "plugin",
+    "steps": [
+      "build",
+      "github",
+      "wporg"
+    ],
+    "build": {
+      "prebuild": [
+        "wp i18n make-pot . languages/acf-dropzone.pot --domain=acf-dropzone"
+      ],
+      "build": [
+        "gulp build"
+      ]
+    },
+    "github": {
+      "user": "mcguffin",
+      "host": "github.com"
+    },
+    "wporg": {
+      "svn": "https://plugins.svn.wordpress.org/acf-dropzone/",
+      "assets": ".wporg"
+    }
+  }
 }
