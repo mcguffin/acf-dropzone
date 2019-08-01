@@ -14,10 +14,30 @@
 /* Alerts/Notifications/Flags */
 /* Social Icons */
 /* Misc/CPT */
+.dropzone .acf-gallery-attachments .show-if-focus,
+.dropzone .acf-image-uploader .hide-if-value .show-if-focus,
+.dropzone .acf-file-uploader .hide-if-value .show-if-focus {
+  visibility: hidden;
+  display: none; }
+
+.dropzone .acf-gallery-attachments:focus,
+.dropzone .acf-image-uploader .hide-if-value:focus,
+.dropzone .acf-file-uploader .hide-if-value:focus {
+  -webkit-box-shadow: 0 0 6px 3px rgba(0, 133, 186, 0.66);
+          box-shadow: 0 0 6px 3px rgba(0, 133, 186, 0.66); }
+  .dropzone .acf-gallery-attachments:focus .show-if-focus,
+  .dropzone .acf-image-uploader .hide-if-value:focus .show-if-focus,
+  .dropzone .acf-file-uploader .hide-if-value:focus .show-if-focus {
+    visibility: visible;
+    display: block; }
+
 .dropzone.acf-field-image .acf-image-uploader .hide-if-value,
 .dropzone.acf-field-file .acf-file-uploader .hide-if-value {
-  padding: 20px;
+  padding: 44.25px 20px;
   border: 4px dashed #cccccc; }
+  .dropzone.acf-field-image .acf-image-uploader .hide-if-value:focus,
+  .dropzone.acf-field-file .acf-file-uploader .hide-if-value:focus {
+    padding: 20px; }
 
 .dropzone.acf-field-gallery .acf-input, .dropzone.acf-field-image .acf-input, .dropzone.acf-field-file .acf-input {
   position: relative; }

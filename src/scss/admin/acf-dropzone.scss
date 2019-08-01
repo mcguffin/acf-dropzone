@@ -2,11 +2,32 @@
 
 @import '../mixins/mixins';
 
+
 .dropzone {
+	.acf-gallery-attachments,
+	.acf-image-uploader .hide-if-value,
+	.acf-file-uploader .hide-if-value {
+		.show-if-focus {
+			visibility:hidden;
+			display:none;
+		}
+		&:focus {
+			box-shadow:0 0 6px 3px rgba($wp-blue,0.66);
+			.show-if-focus {
+				visibility:visible;
+				display:block;
+			}
+		}		
+	}
+	
+	
 	&.acf-field-image .acf-image-uploader,
-	&.acf-field-file .acf-file-uploader{
+	&.acf-field-file .acf-file-uploader {
 		.hide-if-value {
-			padding:20px;
+			padding:44.25px 20px;
+			&:focus {
+				padding:20px;
+			}
 			border:4px dashed $wp-gray-dark;
 		}
 	}

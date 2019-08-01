@@ -63,9 +63,50 @@
 		}
 	})
 
+	var Pasteboard = Backbone.View.extend({
+		events: {
+			paste: 'onPaste'
+		},
+		initialize: function(opt) {
+			Backbone.View.prototype.initialize.apply( this, arguments );
+			this.controller = opt.controller;
+			return this;
+		},
+		render: function() {
+			// make focussable
+			this.$el.attr('tabindex','0');
+			return this;
+		},
+		onPaste:function(e){
+
+			e.preventDefault();
+			e.stopPropagation();
+					
+			var items = e.originalEvent.clipboardData.items, 
+				i, blob;
+			
+			for ( i = 0; i < items.length; i++ ) {
+				
+				if ( items[i].kind !== 'file' ) {
+					continue;
+				}
+				// get pasted file ...
+				blob = items[i].getAsFile();
+				if ( !! blob ) {
+					
+					// ... add to plupload
+					this.controller.uploader.uploader.uploader.addFile( blob, blob.name );					
+				}
+			}
+			return this;
+		}
+	});
 
 	var ACFDropzone = Backbone.View.extend({
-		initialize: function() {
+		initialize: function( opt ) {
+			var $pasteboard;
+			this.field = opt.field;
+			
 			this.notice = false;
 			this.progress = false;
 			this.uploader = new wp.media.view.UploaderWindow({
@@ -73,13 +114,31 @@
 				uploader: {
 					dropzone:  this.el,
 					container: this.el,
+					params: {
+						_acfuploader: this.field.get('key'),
+						foo:'bar',
+					}
 				}
 			});
+			// init pasteboard
+			// file and image field ...
+			$pasteboard = this.$el.find('.hide-if-value');
+			if ( ! $pasteboard.length ) {
+				// ... gallery field
+				$pasteboard = this.$el.find('.acf-gallery-attachments');
+			}
+			if ( $pasteboard.length ) {
+				this.pasteboard = new Pasteboard({
+					controller: this,
+					el: $pasteboard.get(0)
+				});				
+			}
 
 			return this;
 		},
 		render:function() {
 			$( this.uploader.render().el ).appendTo( this.el );
+			this.pasteboard.render();
 
 			return this;
 		},
@@ -103,14 +162,16 @@
 			this.uploader.uploader.uploader.bind('UploadProgress', this.fileUploadProgress, this );
 			this.uploader.uploader.uploader.bind('FileUploaded', this.fileUploaded, this );
 			this.uploader.uploader.uploader.bind('error', this.fileUploadError, this );
-
+			
 			return this;
 		},
 		filesAdded: function( uploader, files ) {
 			//
 			this.total = files.length;
 			this.done = 0;
+			//_acfuploader
 			//this.notice = false;
+console.log('added')
 		},
 		fileBeforeUpload: function( uploader, file ) {
 			this.addProgress();
@@ -121,11 +182,20 @@
 			this.progress.setProgress( ( 100 * this.done + file.percent ) / this.total );
 		},
 		fileUploaded:function( uploader, file, response ) {
+			var result;
 			this.file = file;
-			this.trigger('acf-dropzone-uploaded',file.attachment,this.done);
-			this.done++;
-			if (this.total === this.done ) {
-				this.removeProgress();
+			try {
+				this.trigger('acf-dropzone-uploaded',file.attachment,this.done);				
+				this.done++;
+				if (this.total === this.done ) {
+					this.removeProgress();
+				}
+			} catch( err ) {
+				result = JSON.parse( response.response );
+				this.fileUploadError( uploader, {
+					file: this.file,
+					message: result.data.message
+				});
 			}
 		},
 		fileUploadError:function( uploader, error ) {
@@ -211,8 +281,10 @@
 		info.render();
 		info.$el.prependTo( field.$('.hide-if-value') );
 
+
 		dropzone = new ACFDropzone({
 			el: el,
+			field: field
 		});
 		dropzone.render();
 		dropzone.ready();
@@ -235,6 +307,7 @@
 
 		dropzone = new ACFDropzone({
 			el: el,
+			field: field
 		});
 		dropzone.render();
 		dropzone.ready();

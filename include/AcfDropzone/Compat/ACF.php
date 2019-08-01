@@ -105,6 +105,8 @@ class ACF extends Core\Singleton {
 		</script>
 		<script type="text/html" id="tmpl-acf-dropzone-info">
 			<p class="drag-drop-info"><?php _e('Drop files here','acf-dropzone') ?></p>
+			<p class="show-if-focus"><?php _e('or','acf-dropzone') ?></p>
+			<p class="show-if-focus drag-drop-info"><?php _e('Paste from Clipboard','acf-dropzone') ?></p>
 			<p><?php _e('or','acf-dropzone') ?></p>
 		</script>
 		<?php
