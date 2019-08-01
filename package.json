@@ -5,14 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "gulp dev",
-    "build": "gulp build && npm run i18n",
-    "release": "npm run i18n && node ./src/run/release.js -- build github wporg",
-    "release:build": "npm run i18n && node ./src/run/release.js -- build",
-    "release:github": "node ./src/run/release.js -- github",
-    "release:bitbucket": "node ./src/run/release.js -- bitbucket",
-    "release:wporg": "node ./src/run/release.js -- wporg",
     "i18n": "wp i18n make-pot . languages/acf-dropzone.pot --domain=acf-dropzone",
-    "package:wporg": "cp ./.wporg/screenshot-*.png . && git add . && git commit -m \"tmp\" && git archive --format=zip --prefix=acf-dropzone/ --output=../acf-dropzone.zip --worktree-attributes HEAD && git reset --hard HEAD~",
     "rollback": "git reset --hard HEAD~ && git push origin +master"
   },
   "repository": {
