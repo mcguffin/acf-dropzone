@@ -65,7 +65,10 @@
 
 
 	var ACFDropzone = Backbone.View.extend({
-		initialize: function() {
+		initialize: function( opt ) {
+			var $pasteboard;
+			this.field = opt.field;
+			
 			this.notice = false;
 			this.progress = false;
 			this.uploader = new wp.media.view.UploaderWindow({
@@ -73,6 +76,10 @@
 				uploader: {
 					dropzone:  this.el,
 					container: this.el,
+					params: {
+						_acfuploader: this.field.get('key'),
+						foo:'bar',
+					}
 				}
 			});
 
@@ -121,11 +128,20 @@
 			this.progress.setProgress( ( 100 * this.done + file.percent ) / this.total );
 		},
 		fileUploaded:function( uploader, file, response ) {
+			var result;
 			this.file = file;
-			this.trigger('acf-dropzone-uploaded',file.attachment,this.done);
-			this.done++;
-			if (this.total === this.done ) {
-				this.removeProgress();
+			try {
+				this.trigger('acf-dropzone-uploaded',file.attachment,this.done);				
+				this.done++;
+				if (this.total === this.done ) {
+					this.removeProgress();
+				}
+			} catch( err ) {
+				result = JSON.parse( response.response );
+				this.fileUploadError( uploader, {
+					file: this.file,
+					message: result.data.message
+				});
 			}
 		},
 		fileUploadError:function( uploader, error ) {
@@ -213,6 +229,7 @@
 
 		dropzone = new ACFDropzone({
 			el: el,
+			field: field
 		});
 		dropzone.render();
 		dropzone.ready();
@@ -235,6 +252,7 @@
 
 		dropzone = new ACFDropzone({
 			el: el,
+			field: field
 		});
 		dropzone.render();
 		dropzone.ready();
