@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the ACF Dropzone plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: ACF Dropzone 1.0.0\n"
+"Project-Id-Version: ACF Dropzone 1.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/acf-dropzone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-08-02T09:39:34+00:00\n"
+"POT-Creation-Date: 2019-08-02T15:11:52+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.2.0\n"
 "X-Domain: acf-dropzone\n"
@@ -42,21 +42,21 @@ msgstr ""
 msgid "Dismiss this notice."
 msgstr ""
 
-#: include/AcfDropzone/Compat/ACF.php:108
+#: include/AcfDropzone/Compat/ACF.php:109
 msgid "Paste from Clipboard"
 msgstr ""
 
-#: include/AcfDropzone/Compat/ACF.php:109
-#: include/AcfDropzone/Compat/ACF.php:112
+#: include/AcfDropzone/Compat/ACF.php:110
+#: include/AcfDropzone/Compat/ACF.php:113
 msgid "or"
 msgstr ""
 
-#: include/AcfDropzone/Compat/ACF.php:110
+#: include/AcfDropzone/Compat/ACF.php:111
 msgid "Drop files here"
 msgstr ""
 
 #. Translators: followed by post or admin page name
-#: include/AcfDropzone/Compat/ACF.php:117
+#: include/AcfDropzone/Compat/ACF.php:119
 msgctxt "attachment-title"
 msgid "Pasted Into"
 msgstr ""
