@@ -13,7 +13,7 @@ Drag and drop file upload for ACF-Fields.
 
 == Description ==
 
-Enable Drag and Drop Upload in [ACF](https://wordpress.org/plugins/advanced-custom-fields/)’s Image, File and Gallery Field.
+Enable Drag and Drop Upload in [ACF](https://wordpress.org/plugins/advanced-custom-fields/)’s Image, File and Gallery Field. 
 
 = Supported Fields =
 
@@ -47,7 +47,7 @@ Please post an issue in the [GitHub-Repository](https://github.com/mcguffin/acf-
 == Screenshots ==
 
 1. ACF Field configuration
-2. Some ACF Fields with dropzone enabled
+2. Some ACF Fields with dropzone enabled.
 3. Dragging over ...
 4. ... uploading
 5. Dragging over a Gallery field
@@ -57,6 +57,10 @@ Please post an issue in the [GitHub-Repository](https://github.com/mcguffin/acf-
 On the whole upgrading is always a good idea.
 
 == Changelog ==
+
+= 1.1.0 =
+ - Introduce paste feature
+ - Apply ACF's file validation upon upload
 
 = 1.0.0 =
 Release at wordpress.org

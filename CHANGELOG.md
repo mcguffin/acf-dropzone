@@ -1,6 +1,15 @@
 ACF Dropzone Changes
 ====================
 
+1.0.0
+-----
+ - Introduce paste feature
+ - Apply ACF's file validation upon upload
+
+1.0.0
+-----
+ - Release at WP.org
+
 0.1.6
 -----
  - Fix block editor
