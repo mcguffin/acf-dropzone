@@ -4,7 +4,7 @@
   "description": "Drag and drop upload for ACF Fields",
   "private": true,
   "scripts": {
-    "dev": "gulp dev",
+    "dev": "npm run dashicons && gulp dev",
     "dashicons": "node ./src/run/dashicons.js",
     "i18n": "wp i18n make-pot . languages/acf-dropzone.pot --domain=acf-dropzone --exclude=tmp/*",
     "rollback": "git reset --hard HEAD~ && git push origin +master"
