@@ -6,14 +6,6 @@ import ACFDropzone from 'acf-dropzone.js';
 (function( $ ){
 
 
-	// var UploaderInfo = wp.media.View.extend({
-	// 	tagName:   'div',
-	// 	className: 'acf-dropzone-info',
-	// 	template:wp.template('acf-dropzone-info')
-	// });
-
-
-
 	const initFileDropzone = field => {
 		let el,
 			parent,

@@ -6,7 +6,7 @@ module.exports = Backbone.View.extend({
 		blur:'stopListenPaste'
 	},
 	listenPaste:function(e){
-		var self = this;
+		const self = this;
 		this.$el.on('paste',function() {
 			self.onPaste.apply( self, arguments );
 		});
@@ -28,8 +28,8 @@ module.exports = Backbone.View.extend({
 		e.preventDefault();
 		e.stopPropagation();
 
-		var items = e.originalEvent.clipboardData.items,
-			i, blob, file, filename;
+		const items = e.originalEvent.clipboardData.items;
+		let i, blob, file, filename;
 
 		for ( i = 0; i < items.length; i++ ) {
 

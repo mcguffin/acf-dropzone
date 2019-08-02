@@ -5,7 +5,7 @@ import Progress from 'progress.js';
 
 module.exports = Backbone.View.extend({
 	initialize: function( opt ) {
-		var $pasteboard;
+
 		this.field = opt.field;
 
 		this.notice = false;
@@ -20,8 +20,7 @@ module.exports = Backbone.View.extend({
 				}
 			}
 		});
-		$pasteboard = this.$el.is('[data-uploader="wp"]') ? this.el : this.field.$('.acf-gallery-attachments').get(0);
-		console.log($pasteboard)
+
 		this.pasteboard = new Pasteboard({
 			controller: this,
 			el: this.$el.is('[data-uploader="wp"]') ? this.el : this.field.$('.acf-gallery-attachments').get(0)
@@ -31,12 +30,13 @@ module.exports = Backbone.View.extend({
 	},
 	render:function() {
 		$( this.uploader.render().el ).appendTo( this.el );
+
 		this.pasteboard.render();
 
 		return this;
 	},
 	ready: function() {
-		var self = this;
+		const self = this;
 		this.$el
 		.on('drop dragenter dragleave dragover',function(e){
 			// prevent block editor file drop
@@ -74,7 +74,7 @@ module.exports = Backbone.View.extend({
 		this.progress.setProgress( ( 100 * this.done + file.percent ) / this.total );
 	},
 	fileUploaded:function( uploader, file, response ) {
-		var result;
+		let result;
 		this.file = file;
 		try {
 			this.trigger('acf-dropzone-uploaded',file.attachment,this.done);
@@ -115,7 +115,7 @@ module.exports = Backbone.View.extend({
 			return this;
 		}
 		this.progress = new Progress();
-		this.progress.render().$el.appendTo(this.el);
+		this.progress.render().$el.prependTo(this.el);
 		return this;
 	},
 	removeProgress:function( percent ) {
