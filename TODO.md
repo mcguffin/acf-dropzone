@@ -1,7 +1,8 @@
 TODO
 ====
- - [ ] UI: show dropzone in empty gallery
- - [ ] Code: Use ESNext
+ - [x] UI: show dropzone in empty gallery
+ - [x] Code: Use ESNext
+ - [x] Block editor: dropzones (z-index:100) overlay notices (z-index:29)
  - [x] ACF Image Validation
  - [x] Pasteboard
      - [x] Make file fields with value pastable

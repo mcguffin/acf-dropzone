@@ -60,7 +60,8 @@ On the whole upgrading is always a good idea.
 
 = 1.1.0 =
  - Introduce paste feature
- - Apply ACF's file validation upon upload
+ - Slight UI improvements
+ - Apply ACF's file validation on upload
 
 = 1.0.0 =
 Release at wordpress.org

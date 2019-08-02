@@ -104,12 +104,14 @@ class ACF extends Core\Singleton {
 			</button>
 		</script>
 		<script type="text/html" id="tmpl-acf-dropzone-info">
+			
 			<p>
 				<span class="show-if-focus drag-drop-info"><?php _e('Paste from Clipboard','acf-dropzone') ?></span>
 				<span class="show-if-focus"><?php _e('or','acf-dropzone') ?></span>
 				<span class="drag-drop-info"><?php _e('Drop files here','acf-dropzone') ?></span>
 			</p>
-			<p><?php _e('or','acf-dropzone') ?></p>
+			<# if (data.or) { #><p><?php _e('or','acf-dropzone') ?></p><# } #>
+			
 		</script>
 		<script type="text/html" id="tmpl-acf-dropzone-attachment-title">
 			<?php 
