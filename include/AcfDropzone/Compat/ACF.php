@@ -104,10 +104,29 @@ class ACF extends Core\Singleton {
 			</button>
 		</script>
 		<script type="text/html" id="tmpl-acf-dropzone-info">
-			<p class="drag-drop-info"><?php _e('Drop files here','acf-dropzone') ?></p>
-			<p class="show-if-focus"><?php _e('or','acf-dropzone') ?></p>
-			<p class="show-if-focus drag-drop-info"><?php _e('Paste from Clipboard','acf-dropzone') ?></p>
+			<p>
+				<span class="show-if-focus drag-drop-info"><?php _e('Paste from Clipboard','acf-dropzone') ?></span>
+				<span class="show-if-focus"><?php _e('or','acf-dropzone') ?></span>
+				<span class="drag-drop-info"><?php _e('Drop files here','acf-dropzone') ?></span>
+			</p>
 			<p><?php _e('or','acf-dropzone') ?></p>
+		</script>
+		<script type="text/html" id="tmpl-acf-dropzone-attachment-title">
+			<?php 
+			/* Translators: followed by post or admin page name */
+			_ex('Pasted Into', 'attachment-title', 'acf-dropzone'); ?> <?php 
+				global $plugin_page;
+				if ( $post = get_post() ) {
+					// post title
+					echo $post->post_title;
+				} else if ( function_exists('acf_get_options_page') && $options_page = acf_get_options_page( $plugin_page ) ) {
+					// acf options page title
+					echo $options_page->page_title;
+				} else if ( $screen = get_current_screen() ) {
+					// screen id
+					echo $screen->id;
+				}
+			?> - {{data.fieldname}}
 		</script>
 		<?php
 

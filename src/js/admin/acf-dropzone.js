@@ -1,32 +1,12 @@
 (function( $, dropzone ){
-	//
-	// dropzone.Droploader = wp.Uploader.extend({
-	// 	init:     function(e) {
-	// 		console.log(e);
-	// 	},
-	// 	error:    function(e) {
-	// 		console.log(e);
-	// 	},
-	// 	success:  function(e) {
-	// 		console.log(e);
-	// 	},
-	// 	added:    function(e) {
-	// 		console.log(e);
-	// 	},
-	// 	progress: function(e) {
-	// 		console.log(e);
-	// 	},
-	// 	complete: function(e) {
-	// 		console.log(e);
-	// 	},
-	//
-	// });
+
 
 	var UploaderInfo = wp.media.View.extend({
 		tagName:   'div',
 		className: 'acf-dropzone-info',
 		template:wp.template('acf-dropzone-info')
 	});
+
 	var Progress = Backbone.View.extend({
 		tagName:   'div',
 		className: 'media-progress-bar-box',
@@ -65,7 +45,17 @@
 
 	var Pasteboard = Backbone.View.extend({
 		events: {
-			paste: 'onPaste'
+			focus:'listenPaste',
+			blur:'stopListenPaste'
+		},
+		listenPaste:function(e){
+			var self = this;
+			this.$el.on('paste',function() {
+				self.onPaste.apply( self, arguments );
+			});
+		},
+		stopListenPaste:function(){
+			this.$el.off('paste');
 		},
 		initialize: function(opt) {
 			Backbone.View.prototype.initialize.apply( this, arguments );
@@ -74,28 +64,35 @@
 		},
 		render: function() {
 			// make focussable
-			this.$el.attr('tabindex','0');
+			this.$el.attr('tabindex','-1');//.attr('contenteditable','true');
 			return this;
 		},
 		onPaste:function(e){
-
 			e.preventDefault();
 			e.stopPropagation();
-					
+
 			var items = e.originalEvent.clipboardData.items, 
-				i, blob;
+				i, blob, file, filename;
 			
 			for ( i = 0; i < items.length; i++ ) {
-				
+
 				if ( items[i].kind !== 'file' ) {
 					continue;
 				}
+
 				// get pasted file ...
 				blob = items[i].getAsFile();
 				if ( !! blob ) {
-					
 					// ... add to plupload
-					this.controller.uploader.uploader.uploader.addFile( blob, blob.name );					
+
+
+					this.controller.uploader.uploader.param('post_data', { 
+						post_title: wp.template('acf-dropzone-attachment-title')({
+							fieldname:this.controller.field.get('name')
+						}).trim(),
+						post_type: 'attachment' 
+					} );
+					this.controller.uploader.uploader.uploader.addFile( blob, blob.name );
 				}
 			}
 			return this;
@@ -116,23 +113,15 @@
 					container: this.el,
 					params: {
 						_acfuploader: this.field.get('key'),
-						foo:'bar',
 					}
 				}
 			});
-			// init pasteboard
-			// file and image field ...
-			$pasteboard = this.$el.find('.hide-if-value');
-			if ( ! $pasteboard.length ) {
-				// ... gallery field
-				$pasteboard = this.$el.find('.acf-gallery-attachments');
-			}
-			if ( $pasteboard.length ) {
-				this.pasteboard = new Pasteboard({
-					controller: this,
-					el: $pasteboard.get(0)
-				});				
-			}
+			$pasteboard = this.$el.is('[data-uploader="wp"]') ? this.el : this.field.$('.acf-gallery-attachments').get(0);
+			console.log($pasteboard)
+			this.pasteboard = new Pasteboard({
+				controller: this,
+				el: this.$el.is('[data-uploader="wp"]') ? this.el : this.field.$('.acf-gallery-attachments').get(0)
+			});
 
 			return this;
 		},
@@ -162,7 +151,7 @@
 			this.uploader.uploader.uploader.bind('UploadProgress', this.fileUploadProgress, this );
 			this.uploader.uploader.uploader.bind('FileUploaded', this.fileUploaded, this );
 			this.uploader.uploader.uploader.bind('error', this.fileUploadError, this );
-			
+			this.pasteboard.render();
 			return this;
 		},
 		filesAdded: function( uploader, files ) {
@@ -171,7 +160,6 @@
 			this.done = 0;
 			//_acfuploader
 			//this.notice = false;
-console.log('added')
 		},
 		fileBeforeUpload: function( uploader, file ) {
 			this.addProgress();
@@ -191,11 +179,18 @@ console.log('added')
 					this.removeProgress();
 				}
 			} catch( err ) {
-				result = JSON.parse( response.response );
-				this.fileUploadError( uploader, {
-					file: this.file,
-					message: result.data.message
-				});
+				try {
+					result = JSON.parse( response.response );
+					this.fileUploadError( uploader, {
+						file: this.file,
+						message: result.data.message
+					});
+				} catch ( err2 ) {
+					this.fileUploadError( uploader, {
+						file: this.file,
+						message: response.response
+					});
+				}
 			}
 		},
 		fileUploadError:function( uploader, error ) {
