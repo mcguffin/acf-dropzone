@@ -56,12 +56,13 @@
     "type": "plugin",
     "steps": [
       "build",
+      "git",
       "github",
       "wporg"
     ],
     "build": {
       "prebuild": [
-        "wp i18n make-pot . languages/acf-dropzone.pot --domain=acf-dropzone"
+        "wp i18n make-pot . languages/acf-dropzone.pot --domain=acf-dropzone --exclude=tmp"
       ],
       "build": [
         "gulp build"
@@ -72,8 +73,12 @@
       "host": "github.com"
     },
     "wporg": {
-      "svn": "https://plugins.svn.wordpress.org/acf-dropzone/",
-      "assets": ".wporg"
+      "assets": ".wporg",
+      "svn": "https://plugins.svn.wordpress.org/acf-dropzone/"
+    },
+    "git": {
+      "host": "github.com",
+      "user": "mcguffin"
     }
   }
 }
