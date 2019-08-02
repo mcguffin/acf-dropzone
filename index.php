@@ -8,8 +8,6 @@ Author: Jörn Lund
 Version: 1.0.0
 Author URI: https://github.com/mcguffin
 License: GPL3
-Github Repository: mcguffin/acf-dropzone
-GitHub Plugin URI: mcguffin/acf-dropzone
 Requires WP: 4.8
 Requires PHP: 5.6
 Text Domain: acf-dropzone
