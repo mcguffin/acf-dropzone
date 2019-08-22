@@ -1,7 +1,7 @@
 === ACF Dropzone ===
 Contributors: podpirate
 Donate link: https://www.msf.org/donate
-Tags: drag-drop acf file upload
+Tags: drag-drop, paste, acf, file upload
 Requires at least: 5.0
 Requires PHP: 5.6
 Tested up to: 5.2.2
@@ -13,7 +13,7 @@ Drag and drop file upload for ACF-Fields.
 
 == Description ==
 
-Enable Drag and Drop Upload in [ACF](https://wordpress.org/plugins/advanced-custom-fields/)’s Image, File and Gallery Field. 
+Enable Drag and Drop Upload in [ACF](https://wordpress.org/plugins/advanced-custom-fields/)’s Image, File and Gallery Field.
 
 = Supported Fields =
 
