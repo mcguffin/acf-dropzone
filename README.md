@@ -34,6 +34,11 @@ Just follow the [Automatic Plugin Installation](https://wordpress.org/support/ar
 $ wp plugin install --activate acf-dropzone
 ```
 
+#### Using composer
+```
+composer require mcguffin/acf-dropzone
+```
+
 ### Development
  - cd into your plugin directory
  - $ `git clone git@github.com:mcguffin/acf-dropzone.git`
