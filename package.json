@@ -14,7 +14,7 @@
     "url": "git+https://github.com/mcguffin/acf-dropzone.git"
   },
   "author": "Jörn Lund",
-  "license": "GPL3",
+  "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/mcguffin/acf-dropzone/issues"
   },

@@ -1,0 +1,14 @@
+{
+  "name": "mcguffin/acf-dropzone",
+  "description": "Drag and drop file upload for ACF-Fields.",
+  "keywords": [
+    "ACF",
+    "Upload",
+	"Dropzone"
+  ],
+  "homepage": "https://github.com/mcguffin/acf-dropzone",
+  "type": "wordpress-plugin",
+  "require": {
+    "php": ">=5.6.0"
+  }
+}
