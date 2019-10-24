@@ -1,6 +1,7 @@
 {
   "name": "mcguffin/acf-dropzone",
   "description": "Drag and drop file upload for ACF-Fields.",
+  "license": "GPL-3.0-or-later",
   "keywords": [
     "ACF",
     "Upload",
