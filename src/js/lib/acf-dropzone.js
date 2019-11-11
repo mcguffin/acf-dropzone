@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Notice from 'notice.js';
 import Pasteboard from 'pasteboard.js';
 import Progress from 'progress.js';

@@ -1,4 +1,4 @@
-
+import $ from 'jquery';
 
 module.exports = Backbone.View.extend({
 	events: {

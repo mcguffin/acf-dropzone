@@ -4,10 +4,13 @@
   "description": "Drag and drop upload for ACF Fields",
   "private": true,
   "scripts": {
-    "dev": "npm run dashicons && gulp dev",
+    "dev": "gulp dev",
     "dashicons": "node ./src/run/dashicons.js",
-    "i18n": "wp i18n make-pot . languages/acf-dropzone.pot --domain=acf-dropzone --exclude=tmp/*",
-    "rollback": "git reset --hard HEAD~ && git push origin +master"
+    "i18n": "node src/run/json-i18n.js acf-dropzone",
+    "rollback": "git reset --hard HEAD~ && git push origin +master",
+    "init": "mkdir -p json/acf && mkdir -p json/post-type && mkdir -p json/taxonomy && mkdir -p src/php",
+    "test": "node ./src/run/test.js",
+    "dev-test": "./src/run/dev-test.sh"
   },
   "repository": {
     "type": "git",
@@ -20,11 +23,26 @@
   },
   "browserslist": [
     "last 3 versions",
-    "> 0.25%",
+    "> 0.125%",
     "IE 10"
   ],
   "browserify-shim": {
-    "jquery": "global:jQuery"
+    "jquery": "global:jQuery",
+    "backbone": "global:Backbone",
+    "classnames": "global:classnames",
+    "@wordpress/blocks": "global:wp.blocks",
+    "@wordpress/block-editor": "global:wp.blockEditor",
+    "@wordpress/block-library": "global:wp.blockLibrary",
+    "@wordpress/components": "global:wp.components",
+    "@wordpress/compose": "global:wp.compose",
+    "@wordpress/data": "global:wp.data",
+    "@wordpress/dom": "global:wp.dom",
+    "@wordpress/editor": "global:wp.editor",
+    "@wordpress/element": "global:wp.element",
+    "@wordpress/format-library": "global:wp.formatLibrary",
+    "@wordpress/i18n": "global:wp.i18n",
+    "@wordpress/keycodes": "global:wp.keycodes",
+    "@wordpress/rich-text": "global:wp.richText"
   },
   "homepage": "https://github.com/mcguffin/acf-dropzone#readme",
   "devDependencies": {
@@ -42,15 +60,63 @@
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
+    "tinyify": "^2.5.1",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
-    "jquery": "^1.12.4"
+    "jquery": "^1.12.4",
+    "@wordpress/block-editor": "^3.2.2",
+    "@wordpress/block-library": "^2.9.2",
+    "@wordpress/blocks": "^6.7.2",
+    "@wordpress/components": "^8.3.2",
+    "@wordpress/compose": "^3.7.2",
+    "@wordpress/data": "^4.9.2",
+    "@wordpress/dom": "^2.5.2",
+    "@wordpress/editor": "^9.7.2",
+    "@wordpress/element": "^2.8.2",
+    "@wordpress/format-library": "^1.9.2",
+    "@wordpress/i18n": "^3.6.1",
+    "@wordpress/keycodes": "^2.6.2",
+    "@wordpress/media-utils": "^1.2.2",
+    "@wordpress/rich-text": "^3.7.2"
   },
   "engines": {
     "node": "12.4.0",
     "npm": "^6.9.0"
+  },
+  "wpSkeleton": {
+    "components": {
+      "core": {
+        "components": [],
+        "flags": []
+      },
+      "compat": {
+        "components": {
+          "acf": {
+            "flags": []
+          }
+        },
+        "flags": []
+      },
+      "git": {
+        "user": "joernlund",
+        "remote": "git@bitbucket.org:mcguffin/acf-dropzone.git"
+      },
+      "test": {
+        "components": {},
+        "flags": []
+      }
+    },
+    "type": "plugin",
+    "name": "ACF Dropzone",
+    "slug": "acf-dropzone",
+    "prefix": "acf_dropzone",
+    "textdomain": "acf-dropzone",
+    "namespace": "AcfDropzone",
+    "author": "Jörn Lund",
+    "author_uri": "https://github.com/mcguffin",
+    "year": 2019
   },
   "wporg": {
     "type": "plugin",

@@ -1,7 +1,11 @@
 ACF Dropzone Changes
 ====================
 
-1.0.0
+1.1.1
+-----
+ - Code: Apply @mcguffin/wp-skeleton
+
+1.1.0
 -----
  - Introduce paste feature
  - Apply ACF's file validation upon upload

@@ -12,6 +12,7 @@ if ( ! defined('ABSPATH') ) {
 }
 
 
+use AcfDropzone\Asset;
 use AcfDropzone\Core;
 
 
@@ -77,18 +78,15 @@ class ACF extends Core\Singleton {
 	 *	@action acf/enqueue_uploader
 	 */
 	public function enqueue_assets() {
-		$core = Core\Core::instance();
+
 		add_action( 'print_media_templates', array( $this, 'print_media_templates' ) );
 
-		wp_register_style( 'acf-dropzone', $core->get_asset_url('css/admin/acf-dropzone.css'), array(), $core->get_version() );
+		Asset\Asset::get('css/admin/acf-dropzone.css')->enqueue();
 
-		wp_register_script( 'acf-dropzone', $core->get_asset_url('js/admin/acf-dropzone.js'), array('acf-input'), $core->get_version() );
-		wp_localize_script( 'acf-dropzone', 'acf_dropzone', array(
-
-		) );
-
-		wp_enqueue_script('acf-dropzone');
-		wp_enqueue_style('acf-dropzone');
+		Asset\Asset::get('js/admin/acf-dropzone.js')
+			->deps('acf-input')
+			->localize( array(), 'acf_dropzone' )
+			->enqueue();
 
 	}
 
@@ -104,19 +102,19 @@ class ACF extends Core\Singleton {
 			</button>
 		</script>
 		<script type="text/html" id="tmpl-acf-dropzone-info">
-			
+
 			<p>
 				<span class="show-if-focus drag-drop-info"><?php _e('Paste from Clipboard','acf-dropzone') ?></span>
 				<span class="show-if-focus"><?php _e('or','acf-dropzone') ?></span>
 				<span class="drag-drop-info"><?php _e('Drop files here','acf-dropzone') ?></span>
 			</p>
 			<# if (data.or) { #><p><?php _e('or','acf-dropzone') ?></p><# } #>
-			
+
 		</script>
 		<script type="text/html" id="tmpl-acf-dropzone-attachment-title">
-			<?php 
+			<?php
 			/* Translators: followed by post or admin page name */
-			_ex('Pasted Into', 'attachment-title', 'acf-dropzone'); ?> <?php 
+			_ex('Pasted Into', 'attachment-title', 'acf-dropzone'); ?> <?php
 				global $plugin_page;
 				if ( $post = get_post() ) {
 					// post title

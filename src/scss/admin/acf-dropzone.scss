@@ -1,6 +1,6 @@
-@import '../variables/variables';
+@import '../variables/index';
 
-@import '../mixins/mixins';
+@import '../mixins/index';
 
 
 /* fix z-index issues in block editor */
@@ -15,7 +15,7 @@
 }
 
 .dropzone {
-	
+
 	&.acf-field-image .acf-image-uploader,
 	&.acf-field-file .acf-file-uploader {
 		.hide-if-value {
@@ -85,7 +85,7 @@
 
 	.acf-gallery,
 	[data-uploader="wp"] {
-		z-index:100; 
+		z-index:100;
 	}
 
 	.acf-gallery-attachments,
@@ -98,9 +98,9 @@
 			.show-if-focus {
 				display:initial;
 			}
-		}		
+		}
 	}
-	
+
 	.acf-gallery-attachments {
 		border:4px dashed $wp-gray-dark;
 		margin:1px;
@@ -112,8 +112,8 @@
 			top:0;
 			height:100%;
 			width:100%;
-			
-			
+
+
 		}
 		.media-progress-bar-box,
 		.uploader-window {
@@ -134,7 +134,7 @@
 		}
 		.acf-gallery-attachment {
 			&:last-of-type {
-				margin-bottom:5px;	
+				margin-bottom:5px;
 			}
 		}
 	}

@@ -11,13 +11,12 @@ if ( ! defined('ABSPATH') ) {
 	die('FU!');
 }
 
+class Plugin extends Singleton implements ComponentInterface {
 
-use AcfDropzone\PostType;
-use AcfDropzone\Compat;
+	/** @var string plugin prefix */
+	private $plugin_prefix = 'acf_dropzone';
 
-class Plugin extends PluginComponent {
-
-	/** @var string plugin main file abspath */
+	/** @var string plugin main file */
 	private $plugin_file;
 
 	/** @var array metadata from plugin file */
@@ -39,19 +38,10 @@ class Plugin extends PluginComponent {
 		register_uninstall_hook( $this->get_plugin_file(), array( __CLASS__, 'uninstall' ) );
 
 		add_action( 'admin_init', array( $this, 'maybe_upgrade' ) );
-		add_filter( 'extra_plugin_headers', array( $this, 'add_plugin_header' ) );
 
 		add_action( 'plugins_loaded' , array( $this , 'load_textdomain' ) );
 
 		parent::__construct();
-	}
-
-	/**
-	 *	@filter extra_plugin_headers
-	 */
-	public function add_plugin_header( $headers ) {
-		$headers['GithubRepo'] = 'Github Repository';
-		return $headers;
 	}
 
 	/**
@@ -69,10 +59,37 @@ class Plugin extends PluginComponent {
 	}
 
 	/**
+	 *	@return string full plugin url path
+	 */
+	public function get_plugin_url() {
+		return plugin_dir_url( $this->get_plugin_file() );
+	}
+
+
+
+	/**
+	 *	@inheritdoc
+	 */
+	public function get_asset_roots() {
+		return [
+			$this->get_plugin_dir() => $this->get_plugin_url(),
+		];
+	}
+
+
+	/**
 	 *	@return string plugin slug
 	 */
 	public function get_slug() {
 		return basename( $this->get_plugin_dir() );
+	}
+
+
+	/**
+	 *	@return string plugin prefix
+	 */
+	public function get_prefix() {
+		return $this->plugin_prefix;
 	}
 
 	/**
@@ -85,7 +102,7 @@ class Plugin extends PluginComponent {
 	/**
 	 *	@return string current plugin version
 	 */
-	public function get_version() {
+	public function version() {
 		return $this->get_plugin_meta( 'Version' );
 	}
 
@@ -103,12 +120,13 @@ class Plugin extends PluginComponent {
 		return $this->plugin_meta;
 	}
 
+
 	/**
 	 *	@action plugins_loaded
 	 */
 	public function maybe_upgrade() {
 		// trigger upgrade
-		$new_version = $this->get_version();
+		$new_version = $this->version();
 		$old_version = get_site_option( 'acf_dropzone_version' );
 
 		// call upgrade
@@ -128,7 +146,7 @@ class Plugin extends PluginComponent {
 	 *  @action plugins_loaded
 	 */
 	public function load_textdomain() {
-		$path = pathinfo( $this->get_plugin_file(), PATHINFO_FILENAME );
+		$path = pathinfo( $this->get_wp_plugin(), PATHINFO_DIRNAME );
 		load_plugin_textdomain( 'acf-dropzone', false, $path . '/languages' );
 	}
 

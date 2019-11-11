@@ -1,3 +1,4 @@
+import $ from 'jquery';
 
 module.exports = Backbone.View.extend({
 	tagName:   'div',
