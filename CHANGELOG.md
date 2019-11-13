@@ -4,6 +4,7 @@ ACF Dropzone Changes
 1.1.1
 -----
  - Code: Apply @mcguffin/wp-skeleton
+ - Fix jquery dependency
 
 1.1.0
 -----
