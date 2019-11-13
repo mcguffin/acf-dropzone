@@ -84,7 +84,7 @@ class ACF extends Core\Singleton {
 		Asset\Asset::get('css/admin/acf-dropzone.css')->enqueue();
 
 		Asset\Asset::get('js/admin/acf-dropzone.js')
-			->deps('acf-input')
+			->deps('acf-input','jquery')
 			->localize( array(), 'acf_dropzone' )
 			->enqueue();
 
