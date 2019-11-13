@@ -16,9 +16,38 @@ class PluginTest {
 		add_action( 'acf/untrash_field_group', [ $this, 'mutate_field_group' ], 9 );
 		add_action( 'acf/update_field_group', [ $this, 'mutate_field_group' ], 9 );
 
+		add_action( 'acf/init', [ $this, 'register_blocks' ] );
+
 	}
 
 
+	/**
+	 *	@action 'acf/init'
+	 */
+	public function register_blocks() {
+
+		if ( ! function_exists('acf_register_block') ) {
+			return;
+		}
+
+		// register a testimonial block
+		acf_register_block(array(
+			'name'				=> 'acf-dropzone-test',
+			'title'				=> __('Dropzone Test'),
+			'description'		=> __('Testing ACF-Dropzone'),
+			'render_callback'	=> function ( $block, $content, $is_preview, $post_id ) {
+				printf('<div class="align%s">',$block['align']);
+				echo '<h3>Testing ACF Dropzone</h3>';
+				echo '</div>';
+				?><hr /><?php
+			},
+			'category'			=> 'embed',
+			'icon'				=> 'location-alt',
+			'mode'				=> 'preview', // auto|preview|edit
+			'align'				=> 'full',
+			'keywords'			=> array( 'map' ),
+		));
+	}
 
 	/**
 	 *	@filter 'acf/settings/save_json'

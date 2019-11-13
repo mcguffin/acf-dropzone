@@ -142,6 +142,13 @@
         }
     ],
     "location": [
+		[
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/acf-dropzone-test"
+            }
+        ],
         [
             {
                 "param": "post_type",
