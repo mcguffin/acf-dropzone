@@ -5,7 +5,9 @@
   "keywords": [
     "ACF",
     "Upload",
-	"Dropzone"
+	"Dropzone",
+	"WordPress",
+	"Plugin"
   ],
   "homepage": "https://github.com/mcguffin/acf-dropzone",
   "type": "wordpress-plugin",
