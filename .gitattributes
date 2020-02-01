@@ -8,3 +8,8 @@ package*.json export-ignore
 wp-plugin-boilerplate.json export-ignore
 .wporg export-ignore
 *.md export-ignore
+.editorconfig export-ignore
+.sassrc export-ignore
+composer.* export-ignore
+phpcs*.xml export-ignore
+phpunit.* export-ignore

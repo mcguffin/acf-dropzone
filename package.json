@@ -10,7 +10,10 @@
     "rollback": "git reset --hard HEAD~ && git push origin +master",
     "init": "mkdir -p json/acf && mkdir -p json/post-type && mkdir -p json/taxonomy && mkdir -p src/php",
     "test": "node ./src/run/test.js",
-    "dev-test": "./src/run/dev-test.sh"
+    "dev-test": "./src/run/dev-test.sh",
+    "postinstall": "composer install",
+    "audit": "./vendor/squizlabs/php_codesniffer/bin/phpcs . --report=code --standard=./phpcs-security.ruleset.xml -n -s > ./phpcs-report.txt || exit 0",
+    "ver": "echo \"<?php return $(jq .version < ./package.json);\" > include/version.php"
   },
   "repository": {
     "type": "git",
@@ -131,7 +134,8 @@
         "wp i18n make-pot . languages/acf-dropzone.pot --domain=acf-dropzone --exclude=tmp"
       ],
       "build": [
-        "gulp build"
+        "gulp build",
+        "npm run ver"
       ]
     },
     "github": {
