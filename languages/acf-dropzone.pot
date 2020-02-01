@@ -1,17 +1,17 @@
-# Copyright (C) 2019 Jörn Lund
+# Copyright (C) 2020 Jörn Lund
 # This file is distributed under the same license as the ACF Dropzone plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: ACF Dropzone 1.1.1\n"
+"Project-Id-Version: ACF Dropzone 1.1.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/acf-dropzone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-11-13T09:43:55+00:00\n"
+"POT-Creation-Date: 2020-02-01T06:58:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.3.0\n"
+"X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: acf-dropzone\n"
 
 #. Plugin Name of the plugin
@@ -38,25 +38,24 @@ msgstr ""
 msgid "Enable Dropzone"
 msgstr ""
 
-#: include/AcfDropzone/Compat/ACF.php:101
+#: include/AcfDropzone/Compat/ACF.php:102
 msgid "Dismiss this notice."
 msgstr ""
 
-#: include/AcfDropzone/Compat/ACF.php:107
+#: include/AcfDropzone/Compat/ACF.php:109
 msgid "Paste from Clipboard"
 msgstr ""
 
-#: include/AcfDropzone/Compat/ACF.php:108
-#: include/AcfDropzone/Compat/ACF.php:111
+#: include/AcfDropzone/Compat/ACF.php:110
+#: include/AcfDropzone/Compat/ACF.php:113
 msgid "or"
 msgstr ""
 
-#: include/AcfDropzone/Compat/ACF.php:109
+#: include/AcfDropzone/Compat/ACF.php:111
 msgid "Drop files here"
 msgstr ""
 
-#. Translators: followed by post or admin page name
-#: include/AcfDropzone/Compat/ACF.php:117
+#: include/AcfDropzone/Compat/ACF.php:120
 msgctxt "attachment-title"
 msgid "Pasted Into"
 msgstr ""
