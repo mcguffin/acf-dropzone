@@ -98,33 +98,36 @@ class ACF extends Core\Singleton {
 		<script type="text/html" id="tmpl-acf-dropzone-notice">
 			<p><# if ( data.bold ) { #><strong>{{data.bold}}</strong>: <# } #>{{data.message}}</p>
 			<button type="button" class="notice-dismiss">
-				<span class="screen-reader-text"><?php _e('Dismiss this notice.','acf-dropzone') ?></span>
+				<span class="screen-reader-text">
+					<?php esc_html_e('Dismiss this notice.','acf-dropzone') ?>
+				</span>
 			</button>
 		</script>
 		<script type="text/html" id="tmpl-acf-dropzone-info">
 
 			<p>
-				<span class="show-if-focus drag-drop-info"><?php _e('Paste from Clipboard','acf-dropzone') ?></span>
-				<span class="show-if-focus"><?php _e('or','acf-dropzone') ?></span>
-				<span class="drag-drop-info"><?php _e('Drop files here','acf-dropzone') ?></span>
+				<span class="show-if-focus drag-drop-info"><?php esc_html_e('Paste from Clipboard','acf-dropzone') ?></span>
+				<span class="show-if-focus"><?php esc_html_e('or','acf-dropzone') ?></span>
+				<span class="drag-drop-info"><?php esc_html_e('Drop files here','acf-dropzone') ?></span>
 			</p>
-			<# if (data.or) { #><p><?php _e('or','acf-dropzone') ?></p><# } #>
+			<# if (data.or) { #><p><?php esc_html_e('or','acf-dropzone') ?></p><# } #>
 
 		</script>
 		<script type="text/html" id="tmpl-acf-dropzone-attachment-title">
 			<?php
 			/* Translators: followed by post or admin page name */
-			_ex('Pasted Into', 'attachment-title', 'acf-dropzone'); ?> <?php
+
+			echo esc_html( _x('Pasted Into', 'attachment-title', 'acf-dropzone') ); ?> <?php
 				global $plugin_page;
 				if ( $post = get_post() ) {
 					// post title
-					echo $post->post_title;
+					echo esc_html( $post->post_title );
 				} else if ( function_exists('acf_get_options_page') && $options_page = acf_get_options_page( $plugin_page ) ) {
 					// acf options page title
-					echo $options_page->page_title;
+					echo esc_html( $options_page->page_title );
 				} else if ( $screen = get_current_screen() ) {
 					// screen id
-					echo $screen->id;
+					echo esc_html( $screen->id );
 				}
 			?> - {{data.fieldname}}
 		</script>
