@@ -10,6 +10,7 @@ wp-plugin-boilerplate.json export-ignore
 *.md export-ignore
 .editorconfig export-ignore
 .es* export-ignore
+.babel* export-ignore
 .sassrc export-ignore
 composer.* export-ignore
 phpcs*.xml export-ignore
