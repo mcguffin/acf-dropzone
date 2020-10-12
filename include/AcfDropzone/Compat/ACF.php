@@ -124,7 +124,7 @@ class ACF extends Core\Singleton {
 					echo esc_html( $post->post_title );
 				} else if ( function_exists('acf_get_options_page') && $options_page = acf_get_options_page( $plugin_page ) ) {
 					// acf options page title
-					echo esc_html( $options_page->page_title );
+					echo esc_html( $options_page['page_title'] );
 				} else if ( $screen = get_current_screen() ) {
 					// screen id
 					echo esc_html( $screen->id );

@@ -4,8 +4,8 @@ Donate link: https://www.msf.org/donate
 Tags: drag-drop, paste, acf, file upload
 Requires at least: 5.0
 Requires PHP: 5.6
-Tested up to: 5.5
-Stable tag: 1.1.2
+Tested up to: 5.5.1
+Stable tag: 1.1.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -57,6 +57,9 @@ Please post an issue in the [GitHub-Repository](https://github.com/mcguffin/acf-
 On the whole upgrading is always a good idea.
 
 == Changelog ==
+
+= 1.1.3 =
+ - Fix PHP Warning on ACF options pages
 
 = 1.1.2 =
  - Security hardening
