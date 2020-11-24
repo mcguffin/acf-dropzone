@@ -54,40 +54,24 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.5.4",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
     "@babel/preset-env": "^7.5.4",
+    "@selfisekai/gulp-sass": "^4.2.0",
     "babelify": "^10.0.0",
     "browserify": "^16.3.0",
     "browserify-shim": "^3.8.14",
     "event-stream": "^4.0.1",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^6.1.0",
-    "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
+    "node-sass": "^5.0.0",
     "tinyify": "^2.5.1",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
-    "jquery": "^1.12.4",
-    "@wordpress/block-editor": "^3.2.2",
-    "@wordpress/block-library": "^2.9.2",
-    "@wordpress/blocks": "^6.7.2",
-    "@wordpress/components": "^8.3.2",
-    "@wordpress/compose": "^3.7.2",
-    "@wordpress/data": "^4.9.2",
-    "@wordpress/dom": "^2.5.2",
-    "@wordpress/editor": "^9.7.2",
-    "@wordpress/element": "^2.8.2",
-    "@wordpress/format-library": "^1.9.2",
-    "@wordpress/i18n": "^3.6.1",
-    "@wordpress/keycodes": "^2.6.2",
-    "@wordpress/media-utils": "^1.2.2",
-    "@wordpress/rich-text": "^3.7.2"
+    "jquery": "^3.5.1"
   },
-  "engines": {
-    "node": "12.4.0",
-    "npm": "^6.9.0"
-  },
+  "engines": {},
   "wpSkeleton": {
     "components": {
       "core": {
