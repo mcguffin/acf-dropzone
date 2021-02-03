@@ -43,6 +43,13 @@ I will most likely not maintain the forum support forum on wordpress.org. Anyway
 
 Please post an issue in the [GitHub-Repository](https://github.com/mcguffin/acf-dropzone/issues)
 
+= Just dragging files is so cool! Any way I can show my appreciation? =
+
+Thanks! As a well trained person living in a rich country I am doing quite well.
+But there are billions of people lacking access to essential health services.
+
+So, if this little piece of software made your life a bit easier, a donation at [Medecins sans Frontieres](https://www.msf.org/donate) will do the same for many other people.
+
 
 == Screenshots ==
 
