@@ -2,7 +2,6 @@
 
 @import '../mixins/index';
 
-
 /* fix z-index issues in block editor */
 
 .block-editor-block-list__block .block-editor-block-contextual-toolbar {
@@ -20,7 +19,7 @@
 	&.acf-field-file .acf-file-uploader {
 		.hide-if-value {
 			padding:20px;
-			border:4px dashed $wp-gray-dark;
+			border:4px dashed wp-color(gray-10);
 		}
 	}
 	&.acf-field-gallery,
@@ -45,7 +44,7 @@
 		margin-top:auto;
 	}
 	.media-progress-bar-box {
-		background-color:rgba($wp-gray-dark,0.75);
+		background-color:rgba(wp-color(gray-20),0.75);
 		display: flex;
 		flex-direction:column;
 		align-items:center;
@@ -75,7 +74,7 @@
 		}
 	}
 	.acf-dropzone-info {
-		color:$wp-gray-darker;
+		color:wp-color(gray-40);
 		margin-bottom:5px;
 		text-align: center;
 	}
@@ -94,7 +93,7 @@
 			display:none;
 		}
 		&:focus {
-			box-shadow:0 0 6px 3px rgba($wp-blue,0.66);
+			box-shadow:0 0 6px 3px rgba(wp-color(blue-70),0.66);
 			.show-if-focus {
 				display:initial;
 			}
@@ -102,9 +101,11 @@
 	}
 
 	.acf-gallery-attachments {
-		border:4px dashed $wp-gray-dark;
+		outline:4px dashed wp-color(gray-10);
+		outline-offset: -4px;
 		margin:1px;
-		padding:1px;
+		bottom:51px !important;
+		//padding: 0 !important;
 		.media-progress-bar-box,
 		.uploader-window,
 		.acf-dropzone-info {
@@ -112,8 +113,6 @@
 			top:0;
 			height:100%;
 			width:100%;
-
-
 		}
 		.media-progress-bar-box,
 		.uploader-window {

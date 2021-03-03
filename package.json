@@ -114,13 +114,11 @@
       "wporg"
     ],
     "build": {
-      "versionedFiles": null,
       "prebuild": [
         "wp i18n make-pot . languages/acf-dropzone.pot --domain=acf-dropzone --exclude=tmp"
       ],
       "build": [
-        "gulp build",
-        "npm run ver"
+        "gulp build"
       ]
     },
     "github": {
@@ -129,6 +127,7 @@
     },
     "wporg": {
       "assets": ".wporg",
+      "svn_user": "podpirate",
       "svn": "https://plugins.svn.wordpress.org/acf-dropzone/"
     },
     "git": {
