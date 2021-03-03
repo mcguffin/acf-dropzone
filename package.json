@@ -1,6 +1,6 @@
 {
   "name": "acf-dropzone",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "Drag and drop upload for ACF Fields",
   "private": true,
   "scripts": {
@@ -114,6 +114,7 @@
       "wporg"
     ],
     "build": {
+      "versionedFiles": null,
       "prebuild": [
         "wp i18n make-pot . languages/acf-dropzone.pot --domain=acf-dropzone --exclude=tmp"
       ],
