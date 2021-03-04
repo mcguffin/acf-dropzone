@@ -65,6 +65,9 @@ On the whole upgrading is always a good idea.
 
 == Changelog ==
 
+= 1.1.5 =
+ - Fix: fatal error in AcfDropzone/Compat/ACF (undefined function)
+
 = 1.1.4 =
  - Use WP 5.7 admin colors
  - Fix: PHP Warning sometimes seen in error logs

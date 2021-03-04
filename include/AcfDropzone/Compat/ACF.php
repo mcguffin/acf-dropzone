@@ -116,19 +116,22 @@ class ACF extends Core\Singleton {
 		<script type="text/html" id="tmpl-acf-dropzone-attachment-title">
 			<?php
 			/* Translators: followed by post or admin page name */
+			$pasted_into = _x('Pasted Into', 'attachment-title', 'acf-dropzone');
 
-			echo esc_html( _x('Pasted Into', 'attachment-title', 'acf-dropzone') ); ?> <?php
-				global $plugin_page;
-				if ( $post = get_post() ) {
-					// post title
-					echo esc_html( $post->post_title );
-				} else if ( function_exists('acf_get_options_page') && $options_page = acf_get_options_page( $plugin_page ) ) {
-					// acf options page title
-					echo esc_html( $options_page['page_title'] );
-				} else if ( $screen = get_current_screen() ) {
-					// screen id
-					echo esc_html( $screen->id );
-				}
+			global $plugin_page;
+			if ( $post = get_post() ) {
+				// post title
+				$pasted_into .= ' ' . $post->post_title;
+			} else if ( function_exists('acf_get_options_page') && $options_page = acf_get_options_page( $plugin_page ) ) {
+				// acf options page title
+				$pasted_into .= ' ' . $options_page['page_title'];
+			} else if ( function_exists( 'get_current_screen' ) && $screen = get_current_screen() ) {
+				// screen id
+				$pasted_into .= ' ' . esc_html( $screen->id );
+			} else {
+				$pasted_into = _x('Pasted File', 'attachment-title', 'acf-dropzone');
+			}
+			echo esc_html( $pasted_into );
 			?> - {{data.fieldname}}
 		</script>
 		<?php
