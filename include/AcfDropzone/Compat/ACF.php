@@ -18,6 +18,9 @@ use AcfDropzone\Core;
 
 class ACF extends Core\Singleton {
 
+	private $file_field_types = null;
+	private $gallery_field_types = null;
+
 	/**
 	 *	@inheritdoc
 	 */
@@ -25,13 +28,36 @@ class ACF extends Core\Singleton {
 
 		add_action( 'acf/enqueue_uploader', array( $this, 'enqueue_assets') );
 
-		add_action( 'acf/render_field_settings/type=image',   array( $this, 'add_dropzone_option') );
-		add_action( 'acf/render_field_settings/type=file',    array( $this, 'add_dropzone_option') );
-		add_action( 'acf/render_field_settings/type=gallery', array( $this, 'add_dropzone_option') );
+		add_action( 'acf/init', [ $this, 'acf_init' ] );
 
-		add_filter( 'acf/prepare_field/type=image',   array( $this, 'add_dropzone_class' ) );
-		add_filter( 'acf/prepare_field/type=file',    array( $this, 'add_dropzone_class' ) );
-		add_filter( 'acf/prepare_field/type=gallery', array( $this, 'add_dropzone_class' ) );
+	}
+
+	/**
+	 *	Add the Dropzone option to acf fields
+	 *
+	 *	@action acf/init
+	 */
+	public function acf_init( $field ) {
+		$this->file_field_types = apply_filters( 'acf_dropzone/file_fields', [ 'image', 'file' ] );
+		$this->gallery_field_types = apply_filters( 'acf_dropzone/gallery_fields', [ 'gallery' ] );
+
+		$field_types = array_merge( $this->file_field_types, $this->gallery_field_types );
+
+		foreach ( $field_types as $field_type ) {
+			add_action( 'acf/render_field_settings/type=' . $field_type, [ $this, 'add_dropzone_option' ] );
+			add_filter( 'acf/prepare_field/type=' . $field_type, [ $this, 'add_dropzone_class' ] );
+		}
+
+
+	}
+
+	/**
+	 *	maybe enqueue basic assets
+	 *
+	 *	@action acf/render_field_settings/type=image
+	 *	@action acf/render_field_settings/type=file
+	 */
+	public function render_field() {
 	}
 
 	/**
@@ -67,8 +93,14 @@ class ACF extends Core\Singleton {
 		));
 
 		if ( $field['dropzone'] ) {
-			$field['wrapper']['class'] .= ' dropzone';
+
+			$drop_type = in_array( $field['type'], $this->gallery_field_types )
+				? 'gallery'
+				: 'file';
+
+			$field['wrapper']['class'] .= ' dropzone dropzone-' . sanitize_html_class( $drop_type );
 			$field['wrapper']['class'] = trim( $field['wrapper']['class'] );
+
 		}
 
 		return $field;
@@ -79,13 +111,18 @@ class ACF extends Core\Singleton {
 	 */
 	public function enqueue_assets() {
 
-		add_action( 'print_media_templates', array( $this, 'print_media_templates' ) );
+		if ( ! has_action( 'print_media_templates', [ $this, 'print_media_templates' ] ) ) {
+			add_action( 'print_media_templates', [ $this, 'print_media_templates' ] );
+		}
 
 		Asset\Asset::get('css/admin/acf-dropzone.css')->enqueue();
 
 		Asset\Asset::get('js/admin/acf-dropzone.js')
 			->deps('acf-input','jquery')
-			->localize( array(), 'acf_dropzone' )
+			->localize( [
+				'file_fields' => $this->file_field_types,
+				'gallery_fields' => $this->gallery_field_types,
+			], 'acf_dropzone' )
 			->enqueue();
 
 	}

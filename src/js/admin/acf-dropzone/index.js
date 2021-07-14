@@ -6,6 +6,7 @@ import ACFDropzone from 'acf-dropzone.js';
 
 const initFileDropzone = field => {
 	let el,
+		uploaderType,
 		parent,
 		info,
 		dropzone;
@@ -21,6 +22,7 @@ const initFileDropzone = field => {
 	if ( ! el ) {
 		return;
 	}
+
 	// https://stackoverflow.com/questions/1571076/remove-text-with-jquery
 	field.$('.hide-if-value>p')
 		.contents()
@@ -47,6 +49,8 @@ const initFileDropzone = field => {
 			field.render(attachment);
 		}
 	});
+
+
 }
 const initGalleryDropzone = field => {
 
@@ -78,12 +82,12 @@ const initGalleryDropzone = field => {
 	});
 }
 
+acf_dropzone.file_fields.forEach( type => {
+	acf.addAction( `ready_field/type=${type}`,   initFileDropzone );
+	acf.addAction( `append_field/type=${type}`,   initFileDropzone );
+});
 
-acf.addAction( 'ready_field/type=image',   initFileDropzone );
-acf.addAction( 'ready_field/type=file',    initFileDropzone );
-acf.addAction( 'ready_field/type=gallery', initGalleryDropzone );
-
-// created from repeater
-acf.addAction( 'append_field/type=image',   initFileDropzone );
-acf.addAction( 'append_field/type=file',    initFileDropzone );
-acf.addAction( 'append_field/type=gallery', initGalleryDropzone );
+acf_dropzone.gallery_fields.forEach( type => {
+	acf.addAction( `ready_field/type=${type}`,   initGalleryDropzone );
+	acf.addAction( `append_field/type=${type}`,   initGalleryDropzone );
+});

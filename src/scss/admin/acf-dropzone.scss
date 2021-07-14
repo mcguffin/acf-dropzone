@@ -15,16 +15,11 @@
 
 .dropzone {
 
-	&.acf-field-image .acf-image-uploader,
-	&.acf-field-file .acf-file-uploader {
+	&.dropzone-file [data-uploader] {
 		.hide-if-value {
 			padding:20px;
 			border:4px dashed wp-color(gray-10);
 		}
-	}
-	&.acf-field-gallery,
-	&.acf-field-image,
-	&.acf-field-file {
 	}
 	.acf-input {
 		position:relative;
@@ -54,7 +49,7 @@
 	}
 
 
-	&.acf-field-gallery {
+	&.dropzone-gallery {
 		.notice {
 			z-index:1;
 			margin-top:0;
@@ -71,6 +66,13 @@
 		}
 		& > .hide-if-value {
 			text-align:center;
+		}
+	}
+	[data-uploader="basic"] {
+		&.drag-over {
+			.hide-if-value {
+				border-color: wp-color(blue-40);
+			}
 		}
 	}
 	.acf-dropzone-info {
