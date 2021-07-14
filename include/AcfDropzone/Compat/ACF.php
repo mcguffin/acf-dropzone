@@ -48,6 +48,10 @@ class ACF extends Core\Singleton {
 			add_filter( 'acf/prepare_field/type=' . $field_type, [ $this, 'add_dropzone_class' ] );
 		}
 
+		foreach ( $this->file_field_types as $field_type ) {
+			// check if basic uploader is used
+			add_action( 'acf/render_field/type=' . $field_type, [ $this, 'render_field' ] );
+		}
 
 	}
 
@@ -58,6 +62,7 @@ class ACF extends Core\Singleton {
 	 *	@action acf/render_field_settings/type=file
 	 */
 	public function render_field() {
+		$this->enqueue_basic_assets();
 	}
 
 	/**
@@ -126,6 +131,24 @@ class ACF extends Core\Singleton {
 			->enqueue();
 
 	}
+
+	/**
+	 *	Enqueue assets for basic uploader
+	 */
+	public function enqueue_basic_assets() {
+
+		Asset\Asset::get('css/admin/acf-dropzone.css')->enqueue();
+
+		Asset\Asset::get('js/admin/acf-basic-dropzone.js')
+			->deps('acf-input','jquery')
+			->localize( [
+				'file_fields' => array_merge( $this->file_field_types, [ 'upload_image' ] ), // acf basic uploader has a different field type
+				'gallery_fields' => $this->gallery_field_types,
+			], 'acf_dropzone' )
+			->enqueue();
+
+	}
+
 
 	/**
 	 *	@action print_media_templates
