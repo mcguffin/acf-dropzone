@@ -48,6 +48,31 @@
             "dropzone": 1
         },
         {
+            "key": "field_60ed999e35ead",
+            "label": "Small Image",
+            "name": "small_image",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 300,
+            "min_height": 300,
+            "min_size": "0.1",
+            "max_width": 400,
+            "max_height": 400,
+            "max_size": 1,
+            "mime_types": "jpg,gif",
+            "dropzone": 1
+        },
+        {
             "key": "field_5dc935f71b1bd",
             "label": "Gallery",
             "name": "gallery",
@@ -162,6 +187,13 @@
                 "operator": "==",
                 "value": "all"
             }
+        ],
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/acf-dropzone-test"
+            }
         ]
     ],
     "menu_order": 0,
@@ -172,5 +204,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1614878474
+    "modified": 1626262407
 }

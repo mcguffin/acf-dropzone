@@ -18,6 +18,19 @@ class PluginTest {
 
 		add_action( 'acf/init', [ $this, 'register_blocks' ] );
 
+		add_action( 'template_redirect', 'acf_form_head' );
+		add_filter( 'wp_content', function( $content ) {
+
+			ob_start();
+			acf_form([
+				'id' => 'acf-form',
+				'new_post' => false,
+				'field_groups' => [ 'group_acf_dropzone_some' ],
+				'uploader' => 'wp',
+			]);
+			return $content . ob_end_flush();
+		});
+
 	}
 
 
@@ -47,6 +60,8 @@ class PluginTest {
 			'align'				=> 'full',
 			'keywords'			=> array( 'map' ),
 		));
+
+
 	}
 
 	/**
