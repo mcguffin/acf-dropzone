@@ -16,7 +16,7 @@ const child_process	= require( 'child_process' );
 
 const package = require( './package.json' );
 
-sass.compiler = require('node-sass');
+sass.compiler = require('sass');
 
 let bundlemap = {};
 

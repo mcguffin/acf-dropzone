@@ -63,12 +63,10 @@
     "gulp-autoprefixer": "^6.1.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
-    "node-sass": "^5.0.0",
     "tinyify": "^2.5.1",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   },
-  "dependencies": {},
   "engines": {},
   "wpSkeleton": {
     "components": {
@@ -133,5 +131,8 @@
       "host": "github.com",
       "user": "mcguffin"
     }
+  },
+  "dependencies": {
+    "sass": "^1.35.2"
   }
 }
