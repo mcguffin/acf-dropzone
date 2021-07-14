@@ -27,7 +27,6 @@ const initFileDropzone = field => {
 
 }
 acf_dropzone.file_fields.forEach( type => {
-	console.log(type)
 	acf.addAction( `ready_field/type=${type}`, initFileDropzone );
 	acf.addAction( `append_field/type=${type}`, initFileDropzone );
 });

@@ -65,6 +65,13 @@ On the whole upgrading is always a good idea.
 
 == Changelog ==
 
+= 1.1.6 =
+ - Support basic uploader (frontend)
+ - Introduce Plugin API hooks
+ - Fix missing error messages
+ - WP 5.8 Compatibility
+ - Test with PHP 8
+
 = 1.1.5 =
  - Fix: fatal error in AcfDropzone/Compat/ACF (undefined function)
 
