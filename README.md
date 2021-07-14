@@ -45,3 +45,19 @@ composer require mcguffin/acf-dropzone
  - $ `cd acf-dropzone`
  - $ `npm install`
  - $ `npm run dev`
+
+Plugin API
+----------
+To add dropzone capability to arbitrary field types you can use the `acf_dropzone/file_fields` and `acf_dropzone/gallery_fields` filter.
+
+This might come in handy if you use the feature image field type of [ACF Frontend](https://wordpress.org/plugins/acf-frontend-form-element/), or something alike.
+
+Adding support for ACF Frontend‘s `featured_image` field:
+```php
+add_filter( 'acf_dropzone/file_fields', function($fields) {
+	$fields[] = 'featured_image';
+	return $fields;
+});
+```
+
+Please note that the field input HTML needs to be exactly as the one provided by ACF, so filters won't work on any field.
