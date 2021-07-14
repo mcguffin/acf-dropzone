@@ -7,6 +7,8 @@ import Progress from 'progress.js';
 module.exports = Backbone.View.extend({
 	initialize: function( opt ) {
 
+		const self = this;
+
 		this.field = opt.field;
 
 		this.notice = false;
@@ -18,6 +20,12 @@ module.exports = Backbone.View.extend({
 				container: this.el,
 				params: {
 					_acfuploader: this.field.get('key'),
+				},
+				error: function( msg, err, file ) {
+					self.fileUploadError( self.uploader, {
+						message: msg,
+						file: file
+					} )
 				}
 			}
 		});
@@ -55,7 +63,7 @@ module.exports = Backbone.View.extend({
 		this.uploader.uploader.uploader.bind('BeforeUpload', this.fileBeforeUpload, this );
 		this.uploader.uploader.uploader.bind('UploadProgress', this.fileUploadProgress, this );
 		this.uploader.uploader.uploader.bind('FileUploaded', this.fileUploaded, this );
-		this.uploader.uploader.uploader.bind('error', this.fileUploadError, this );
+		this.uploader.uploader.uploader.bind('error', this.fileUploadError, this ); // maybe remove this?
 		this.pasteboard.render();
 		return this;
 	},
