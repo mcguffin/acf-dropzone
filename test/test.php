@@ -19,7 +19,7 @@ class PluginTest {
 		add_action( 'acf/init', [ $this, 'register_blocks' ] );
 
 		add_action( 'template_redirect', 'acf_form_head' );
-		add_filter( 'wp_content', function( $content ) {
+		add_filter( 'the_content', function( $content ) {
 
 			ob_start();
 			acf_form([
@@ -28,7 +28,7 @@ class PluginTest {
 				'field_groups' => [ 'group_acf_dropzone_some' ],
 				'uploader' => 'wp',
 			]);
-			return $content . ob_end_flush();
+			return $content . ob_get_clean();
 		});
 
 	}
