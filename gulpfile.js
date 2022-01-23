@@ -5,18 +5,12 @@ const autoprefixer	= require( 'gulp-autoprefixer' );
 const browserify	= require( 'browserify' );
 const babelify		= require( 'babelify' );
 const buffer		= require( 'vinyl-buffer' );
-/*
-const sass			= require( 'gulp-sass' );
-/*/
-const sass			= require('@selfisekai/gulp-sass');
-//*/
+const sass			= require('gulp-sass')( require('sass') );
 const source		= require( 'vinyl-source-stream' );
 const es			= require( 'event-stream' );
 const child_process	= require( 'child_process' );
 
 const package = require( './package.json' );
-
-sass.compiler = require('sass');
 
 let bundlemap = {};
 

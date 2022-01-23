@@ -61,6 +61,7 @@
     "event-stream": "^4.0.1",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^6.1.0",
+    "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
     "tinyify": "^2.5.1",
