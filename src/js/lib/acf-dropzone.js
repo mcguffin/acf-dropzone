@@ -12,6 +12,7 @@ module.exports = Backbone.View.extend({
 		this.field = opt.field;
 
 		params._acfuploader = this.field.get('key');
+		// #20 - add post_id and _acf_post_id
 		if ( document.querySelector( '#_acf_post_id' ) ) {
 			params._acf_post_id = document.querySelector( '#_acf_post_id' ).value;
 			if ( parseInt( params._acf_post_id ) > 0 ) {
