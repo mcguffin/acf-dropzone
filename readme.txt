@@ -4,7 +4,7 @@ Donate link: https://www.msf.org/donate
 Tags: drag-drop, paste, acf, file upload
 Requires at least: 5.0
 Requires PHP: 5.6
-Tested up to: 5.9
+Tested up to: 6.0
 Stable tag: 1.1.7
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -64,6 +64,10 @@ So, if this little piece of software made your life a bit easier, a donation at 
 On the whole upgrading is always a good idea.
 
 == Changelog ==
+
+= 1.1.8 =
+ - Enhancement: Include `_acf_post_id` and `post_id` in upload `$_REQUEST`
+ - test with WP 6.0
 
 = 1.1.7 =
  - Fix: Two error messages showing
