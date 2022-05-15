@@ -7,9 +7,17 @@ import Progress from 'progress.js';
 module.exports = Backbone.View.extend({
 	initialize: function( opt ) {
 
-		const self = this;
+		const self = this, params = {};
 
 		this.field = opt.field;
+
+		params._acfuploader = this.field.get('key');
+		if ( document.querySelector( '#_acf_post_id' ) ) {
+			params._acf_post_id = document.querySelector( '#_acf_post_id' ).value;
+			if ( parseInt( params._acf_post_id ) > 0 ) {
+				params.post_id = params._acf_post_id
+			}
+		}
 
 		this.notice = false;
 		this.progress = false;
@@ -18,9 +26,7 @@ module.exports = Backbone.View.extend({
 			uploader: {
 				dropzone:  this.el,
 				container: this.el,
-				params: {
-					_acfuploader: this.field.get('key'),
-				},
+				params,
 				error: function( msg, err, file ) {
 					self.fileUploadError( self.uploader, {
 						message: msg,
