@@ -27,6 +27,8 @@ class ACF extends Core\Singleton {
 	protected function __construct() {
 
 		add_action( 'acf/enqueue_uploader', array( $this, 'enqueue_assets') );
+		// acf doesn't enqueue media upload in block editor
+		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_assets') );
 
 		add_action( 'acf/init', [ $this, 'acf_init' ] );
 

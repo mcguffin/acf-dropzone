@@ -117,7 +117,8 @@
             "min": 0,
             "max": 0,
             "layout": "table",
-            "button_label": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
             "sub_fields": [
                 {
                     "key": "field_5dc935ea1b1bc",
@@ -136,7 +137,8 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_5dc935c81b1ba"
                 },
                 {
                     "key": "field_5dc935d21b1bb",
@@ -161,7 +163,8 @@
                     "max_height": "",
                     "max_size": "",
                     "mime_types": "",
-                    "dropzone": 1
+                    "dropzone": 1,
+                    "parent_repeater": "field_5dc935c81b1ba"
                 }
             ]
         }
@@ -204,5 +207,6 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1626262407
+    "show_in_rest": 0,
+    "modified": 1663860900
 }

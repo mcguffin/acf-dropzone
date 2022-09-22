@@ -2,8 +2,6 @@ import $ from 'jquery';
 import UploaderInfo from 'uploader-info.js';
 import ACFDropzone from 'acf-dropzone.js';
 
-
-
 const initFileDropzone = field => {
 	let el,
 		uploaderType,
@@ -83,11 +81,11 @@ const initGalleryDropzone = field => {
 }
 
 acf_dropzone.file_fields.forEach( type => {
-	acf.addAction( `ready_field/type=${type}`,   initFileDropzone );
-	acf.addAction( `append_field/type=${type}`,   initFileDropzone );
+	acf.addAction( `ready_field/type=${type}`, initFileDropzone );
+	acf.addAction( `load_field/type=${type}`, initFileDropzone );
 });
 
 acf_dropzone.gallery_fields.forEach( type => {
-	acf.addAction( `ready_field/type=${type}`,   initGalleryDropzone );
-	acf.addAction( `append_field/type=${type}`,   initGalleryDropzone );
+	acf.addAction( `ready_field/type=${type}`, initGalleryDropzone );
+	acf.addAction( `load_field/type=${type}`, initGalleryDropzone );
 });
