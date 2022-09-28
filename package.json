@@ -1,6 +1,6 @@
 {
   "name": "acf-dropzone",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "description": "Drag and drop upload for ACF Fields",
   "private": true,
   "scripts": {
