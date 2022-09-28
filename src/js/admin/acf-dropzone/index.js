@@ -17,7 +17,13 @@ const initFileDropzone = field => {
 
 	el = field.$('[data-uploader="wp"]').get(0)
 
+	// no wp uploader
 	if ( ! el ) {
+		return;
+	}
+
+	// already inited
+	if ( field.$('.acf-dropzone-info').length ) {
 		return;
 	}
 
@@ -47,7 +53,6 @@ const initFileDropzone = field => {
 			field.render(attachment);
 		}
 	});
-
 
 }
 const initGalleryDropzone = field => {

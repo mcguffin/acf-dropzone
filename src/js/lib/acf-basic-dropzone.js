@@ -2,10 +2,16 @@ import $ from 'jquery';
 
 class ACFBasicDropzone {
 
-	constructor({el}) {
+	constructor( { el } ) {
+
+		if ( $(el).is('.acf-dropzone-inited') ) {
+			return;
+		}
+
 		let fileInput = $(el).find('[type="file"]').get(0)
 
 		$(el)
+			.addClass('acf-dropzone-inited')
 			.on('dragover', e => {
 				$(el).addClass('drag-over')
 				e.preventDefault();
