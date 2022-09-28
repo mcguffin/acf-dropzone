@@ -65,6 +65,10 @@ const initGalleryDropzone = field => {
 		return;
 	}
 
+	if ( field.$('.acf-dropzone-info').length ) {
+		return;
+	}
+
 	info = new UploaderInfo({or:false});
 	info.render();
 	info.$el.prependTo( el );
