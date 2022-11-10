@@ -3,6 +3,74 @@
     "title": "ACF Dropzone Field Group",
     "fields": [
         {
+            "key": "field_5dc935c81b1ba",
+            "label": "Repeating image",
+            "name": "repeated_image",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_5dc935ea1b1bc",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_5dc935c81b1ba"
+                },
+                {
+                    "key": "field_5dc935d21b1bb",
+                    "label": "Repeated Image",
+                    "name": "repeated_image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "dropzone": 1,
+                    "parent_repeater": "field_5dc935c81b1ba"
+                }
+            ]
+        },
+        {
             "key": "field_5dc93533f6ed7",
             "label": "File",
             "name": "file",
@@ -99,74 +167,6 @@
             "max_size": "",
             "mime_types": "",
             "dropzone": 1
-        },
-        {
-            "key": "field_5dc935c81b1ba",
-            "label": "Repeating image",
-            "name": "repeated_image",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "",
-            "min": 0,
-            "max": 0,
-            "layout": "table",
-            "button_label": "Add Row",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_5dc935ea1b1bc",
-                    "label": "Title",
-                    "name": "title",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": "",
-                    "parent_repeater": "field_5dc935c81b1ba"
-                },
-                {
-                    "key": "field_5dc935d21b1bb",
-                    "label": "Repeated Image",
-                    "name": "repeated_image",
-                    "type": "image",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "preview_size": "medium",
-                    "library": "all",
-                    "min_width": "",
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": "",
-                    "dropzone": 1,
-                    "parent_repeater": "field_5dc935c81b1ba"
-                }
-            ]
         }
     ],
     "location": [
@@ -196,6 +196,13 @@
                 "param": "block",
                 "operator": "==",
                 "value": "acf\/acf-dropzone-test"
+            }
+        ],
+		[
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-acf-dropzone-test"
             }
         ]
     ],

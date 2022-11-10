@@ -11,12 +11,14 @@ class PluginTest {
 
 		add_filter( 'acf/settings/save_json', [ $this, 'save_json' ] );
 
+
 		add_action( 'acf/delete_field_group', [ $this, 'mutate_field_group' ], 9 );
 		add_action( 'acf/trash_field_group', [ $this, 'mutate_field_group' ], 9 );
 		add_action( 'acf/untrash_field_group', [ $this, 'mutate_field_group' ], 9 );
 		add_action( 'acf/update_field_group', [ $this, 'mutate_field_group' ], 9 );
 
 		add_action( 'acf/init', [ $this, 'register_blocks' ] );
+		add_action( 'acf/init', [ $this, 'register_options_page' ] );
 
 		add_action( 'template_redirect', 'acf_form_head' );
 		add_filter( 'the_content', function( $content ) {
@@ -33,6 +35,24 @@ class PluginTest {
 
 	}
 
+
+
+	/**
+	 *	@filter 'acf/init'
+	 */
+	public function register_options_page() {
+		if ( ! function_exists( 'acf_add_options_page' ) ) {
+			return;
+		}
+		acf_add_options_page( array(
+			'page_title'	=> 'ACF Dropzone Test',
+			'description'	=> 'You are testing ACF Dropzone.',
+			'post_id'		=> 'acf_dropzone_test',
+			'icon_url'		=> 'dashicons-location-alt',
+			'autoload'		=> false,
+		) );
+
+	}
 
 	/**
 	 *	@action 'acf/init'
