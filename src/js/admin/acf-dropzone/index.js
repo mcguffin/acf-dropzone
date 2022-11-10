@@ -89,12 +89,10 @@ const initGalleryDropzone = field => {
 	});
 }
 
-acf_dropzone.file_fields.forEach( type => {
-	acf.addAction( `ready_field/type=${type}`, initFileDropzone );
-	acf.addAction( `load_field/type=${type}`, initFileDropzone );
-});
-
-acf_dropzone.gallery_fields.forEach( type => {
-	acf.addAction( `ready_field/type=${type}`, initGalleryDropzone );
-	acf.addAction( `load_field/type=${type}`, initGalleryDropzone );
-});
+acf.addAction( 'new_field', field => {
+	if ( acf_dropzone.file_fields.includes( field.get('type') ) ) {
+		initFileDropzone( field )
+	} else if ( acf_dropzone.gallery_fields.includes( field.get('type') ) ) {
+		initGalleryDropzone( field )
+	}
+})
