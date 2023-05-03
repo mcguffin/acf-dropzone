@@ -4,7 +4,7 @@ Donate link: https://www.msf.org/donate
 Tags: drag-drop, paste, acf, file upload
 Requires at least: 5.0
 Requires PHP: 5.6
-Tested up to: 6.1
+Tested up to: 6.2
 Stable tag: 1.1.12
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -64,6 +64,9 @@ So, if this little piece of software made your life a bit easier, a donation at 
 On the whole upgrading is always a good idea.
 
 == Changelog ==
+
+= 1.1.13 =
+ - Fix: fix php 8.2 deprecation notice
 
 = 1.1.12 =
  - Fix: Dropzone not initing in addded repeater fields
