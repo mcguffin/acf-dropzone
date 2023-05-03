@@ -70,6 +70,16 @@ class Asset {
 	/**
 	 *	@var string
 	 */
+	private $varname;
+
+	/**
+	 *	@var boolean
+	 */
+	private $localized;
+
+	/**
+	 *	@var string
+	 */
 	private $handle;
 
 	/**
