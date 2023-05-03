@@ -5,7 +5,7 @@ Tags: drag-drop, paste, acf, file upload
 Requires at least: 5.0
 Requires PHP: 5.6
 Tested up to: 6.2
-Stable tag: 1.1.12
+Stable tag: 1.1.13
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
