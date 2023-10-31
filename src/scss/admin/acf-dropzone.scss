@@ -15,9 +15,60 @@
 
 .dropzone {
 
+	.acf-gallery-attachments,
+	.acf-file-uploader,
+	.acf-image-uploader {
+		container-name: dropzone;
+		container-type: inline-size;
+		> * {
+			--font-size-sm: 11px;
+			--font-size-lg: 14px;
+			@container dropzone (width > 350px) {
+				--font-size-sm: 14px;
+				--font-size-lg: 20px;
+			}
+		}
+		> .hide-if-value {
+			min-height: calc( 3 * ( var(--font-size-sm) + var(--font-size-lg) ) + 5px + 30px );
+		}
+	}
+	.acf-file-uploader,
+	.acf-image-uploader {
+		&:not(.has-value) > .hide-if-value {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+
+	.acf-dropzone-info {
+		// line-height: 1;
+		margin-top: auto;
+		margin-bottom: 5px;
+		color: wp-color(gray-40);
+		text-align: center;
+		+ p { // btn
+			margin-bottom: auto;
+		}
+		p {
+			&:not(.drag-drop-info) {
+				font-size:11px;
+				@container dropzone (width > 350px) {
+					font-size:14px;
+				}
+			}
+			&.drag-drop-info {
+				font-size:14px;
+				@container dropzone (width > 350px) {
+					font-size:20px;
+				}
+			}
+		}
+	}
+
+
 	&.dropzone-file [data-uploader] {
 		.hide-if-value {
-			padding:20px;
+			padding:10px 20px;
 			border:4px dashed wp-color(gray-10);
 		}
 	}
@@ -75,14 +126,6 @@
 			}
 		}
 	}
-	.acf-dropzone-info {
-		color:wp-color(gray-40);
-		margin-bottom:5px;
-		text-align: center;
-	}
-	.drag-drop-info {
-		font-size:20px;
-	}
 
 	.acf-gallery,
 	[data-uploader="wp"] {
@@ -91,14 +134,16 @@
 
 	.acf-gallery-attachments,
 	[data-uploader="wp"] {
-		.show-if-focus {
-			display:none;
+		&:not(:focus-within) {
+			.show-if-focus {
+				display:none;
+			}
 		}
 		&:focus {
 			box-shadow:0 0 6px 3px rgba(wp-color(blue-70),0.66);
-			.show-if-focus {
-				display:initial;
-			}
+			// .show-if-focus {
+			// 	display:initial;
+			// }
 		}
 	}
 
@@ -109,8 +154,7 @@
 		bottom:51px !important;
 		//padding: 0 !important;
 		.media-progress-bar-box,
-		.uploader-window,
-		.acf-dropzone-info {
+		.uploader-window {
 			position:absolute;
 			top:0;
 			height:100%;
@@ -125,12 +169,14 @@
 		.acf-dropzone-info {
 			display: flex;
 			flex-direction: column;
-			align-items: center;
-			:first-child {
-				margin-top:auto;
-			}
-			:last-child {
-				margin-bottom:auto;
+			height: 100%;
+			justify-content: center;
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			p {
+				margin: 0;
 			}
 		}
 		.acf-gallery-attachment {
