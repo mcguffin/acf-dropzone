@@ -5,31 +5,13 @@ const autoprefixer	= require( 'gulp-autoprefixer' );
 const browserify	= require( 'browserify' );
 const babelify		= require( 'babelify' );
 const buffer		= require( 'vinyl-buffer' );
-const sass			= require('gulp-sass')( require('sass') );
+const sass			= require( 'gulp-sass' )( require('sass') );
 const source		= require( 'vinyl-source-stream' );
 const es			= require( 'event-stream' );
 const child_process	= require( 'child_process' );
 
 const package = require( './package.json' );
 
-let bundlemap = {};
-
-const onFile = (target) => function( file, id, parent ) {
-
-	let f = file.replace(__dirname+'/','')
-	if ( ! bundlemap[ f ] ) {
-		bundlemap[ f ] = [];
-	}
-	bundlemap[ f ].push('js/'+target)
-}
-const onPackage = function(bundle) {
-	// extract from
-	Object.keys(bundlemap).forEach(src => {
-		//  distinct
-		bundlemap[src] = bundlemap[src].filter( ( val, idx, self ) => self.indexOf( val ) === idx )
-	})
-	fs.writeFileSync( './src/js/bundlemap.json',JSON.stringify(bundlemap,null,2), {encoding:'utf-8'});
-}
 
 const config = {
 	sass : {
@@ -53,36 +35,10 @@ const config = {
 }
 
 
-gulp.task('i18n:fix-pot', cb => {
-	try {
-		bundlemap = require( './src/js/bundlemap.json')
-		glob.sync('./languages/*.pot')
-			.map( entry => {
-				let contents = fs.readFileSync( entry, {encoding:'utf-8'} );
-				Object.keys(bundlemap).forEach( src => {
-					let replace = '';
-					let search = RegExp( '#:\\s'+ src.replace('.','\\.') + ':(\\d+)\n', 'g' );
-					bundlemap[src].forEach( dest => {
-						replace += '#: ' + dest + "\n";
-					} );
-					contents = contents.replace( search, replace ).replace( replace+replace,replace);
-				} );
-				fs.writeFileSync(entry,contents,{encoding:'utf-8'});
-			} )
-	} catch(err) {};
-	cb();
-});
 gulp.task('i18n:make-pot',cb => {
 	child_process.execSync(`wp i18n make-pot . languages/${package.name}.pot --domain=${package.name} --exclude=./js,tmp`);
 	cb();
 })
-gulp.task('i18n:make-json',cb => {
-	// rm -f languages/*.json
-	glob.sync('./languages/*.json').map( fs.unlinkSync );
-	glob.sync('./languages/*.po').length && child_process.execSync( "wp i18n make-json languages/*.po --no-purge" );
-	cb();
-});
-
 
 gulp.task('i18n:strings-from-json', cb => {
 	// rm -f languages/*.json
@@ -129,15 +85,13 @@ function js_task(debug) {
 			.map( entry => {
 				let target = entry.replace(/(\.\/src\/js\/|\/index)/g,'');
 				return browserify({
-				        entries: [entry],
+						entries: [entry],
 						debug: debug,
 						paths:['./src/js/lib']
-				    })
+					})
 					.transform( babelify.configure({}) )
 					.transform( 'browserify-shim' )
 					.plugin('tinyify')
-					.on( 'file', onFile(target) )
-					.on( 'package', onPackage )
 					.bundle()
 					.pipe(source(target))
 					.pipe( gulp.dest( config.destPath ) );
@@ -167,13 +121,11 @@ gulp.task('dev:scss', scss_task( true ) );
 gulp.task('watch', cb => {
 	gulp.watch('./src/scss/**/*.scss',gulp.parallel('dev:scss'));
 	gulp.watch('./src/js/**/*.js',gulp.parallel('dev:js'));
-	gulp.watch('./languages/*.pot',gulp.parallel('i18n:fix-pot'));
-	gulp.watch('./languages/*.po',gulp.parallel('i18n:make-json'));
 });
 
 gulp.task('dev',gulp.series('dev:scss','dev:js','watch'));
 
-gulp.task('i18n', gulp.series( 'i18n:strings-from-json','i18n:make-pot','i18n:fix-pot','i18n:make-json'));
+gulp.task('i18n', gulp.series( /*'i18n:strings-from-json',*/'i18n:make-pot'));
 
 gulp.task('build', gulp.series('build:js','build:scss', 'i18n'));
 
