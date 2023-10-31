@@ -3,9 +3,167 @@
     "title": "ACF Dropzone Field Group",
     "fields": [
         {
+            "key": "field_6540d6e67334f",
+            "label": "Layout Field",
+            "name": "layout_field",
+            "aria-label": "",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "layout_6540d6ea6499e": {
+                    "key": "layout_6540d6ea6499e",
+                    "name": "file_layout",
+                    "label": "File Layout",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6540d6f773350",
+                            "label": "File in Layout",
+                            "name": "file_in_layout",
+                            "aria-label": "",
+                            "type": "file",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "library": "all",
+                            "dropzone": 1,
+                            "min_size": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_6540f4625fe6f": {
+                    "key": "layout_6540f4625fe6f",
+                    "name": "nondrop_file",
+                    "label": "Non-Drop File",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6540f4625fe70",
+                            "label": "Non Drop File in Layout",
+                            "name": "non_drop_file_in_layout",
+                            "aria-label": "",
+                            "type": "file",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "library": "all",
+                            "dropzone": 0,
+                            "min_size": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_6540d7cfaeb15": {
+                    "key": "layout_6540d7cfaeb15",
+                    "name": "image_layout",
+                    "label": "Image Layout",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6540d7d5aeb17",
+                            "label": "Layout Image",
+                            "name": "layout_image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "dropzone": 1,
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "preview_size": "medium"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_6540d7e7aeb18": {
+                    "key": "layout_6540d7e7aeb18",
+                    "name": "gallery_layout",
+                    "label": "gallery Layout",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6540d7ecaeb1a",
+                            "label": "Layout Gallery",
+                            "name": "layout_gallery",
+                            "aria-label": "",
+                            "type": "gallery",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "dropzone": 1,
+                            "min": "",
+                            "max": "",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "insert": "append",
+                            "preview_size": "medium"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "min": "",
+            "max": "",
+            "button_label": "Add Row"
+        },
+        {
             "key": "field_5dc935c81b1ba",
             "label": "Repeating image",
             "name": "repeated_image",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -26,6 +184,7 @@
                     "key": "field_5dc935ea1b1bc",
                     "label": "Title",
                     "name": "title",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -46,6 +205,7 @@
                     "key": "field_5dc935d21b1bb",
                     "label": "Repeated Image",
                     "name": "repeated_image",
+                    "aria-label": "",
                     "type": "image",
                     "instructions": "",
                     "required": 0,
@@ -74,6 +234,7 @@
             "key": "field_5dc93533f6ed7",
             "label": "File",
             "name": "file",
+            "aria-label": "",
             "type": "file",
             "instructions": "",
             "required": 0,
@@ -94,6 +255,7 @@
             "key": "field_5dc93540f6ed8",
             "label": "Image",
             "name": "image",
+            "aria-label": "",
             "type": "image",
             "instructions": "",
             "required": 0,
@@ -119,6 +281,7 @@
             "key": "field_60ed999e35ead",
             "label": "Small Image",
             "name": "small_image",
+            "aria-label": "",
             "type": "image",
             "instructions": "",
             "required": 0,
@@ -144,6 +307,7 @@
             "key": "field_5dc935f71b1bd",
             "label": "Gallery",
             "name": "gallery",
+            "aria-label": "",
             "type": "gallery",
             "instructions": "",
             "required": 0,
@@ -198,7 +362,7 @@
                 "value": "acf\/acf-dropzone-test"
             }
         ],
-		[
+        [
             {
                 "param": "options_page",
                 "operator": "==",
@@ -215,5 +379,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1663860900
+    "modified": 1698755727
 }
