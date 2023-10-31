@@ -147,6 +147,14 @@
 		}
 	}
 
+	.acf-gallery-main {
+		display: grid;
+		grid-template-rows: auto min-content;
+		> * {
+			position: static;
+		}
+	}
+
 	.acf-gallery-attachments {
 		outline:4px dashed wp-color(gray-10);
 		outline-offset: -4px;
