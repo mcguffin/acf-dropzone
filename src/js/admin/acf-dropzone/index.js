@@ -3,46 +3,38 @@ import UploaderInfo from 'uploader-info.js';
 import ACFDropzone from 'acf-dropzone.js';
 
 const initFileDropzone = field => {
-	let el,
-		uploaderType,
-		parent,
-		info,
-		dropzone;
 
 	if ( ! field.$el.is('.dropzone') ) {
 		return;
 	}
 
-	parent = field.parent();
+	const parent = field.parent();
 
-	el = field.$('[data-uploader="wp"]').get(0)
+	const el = field.$('[data-uploader="wp"]').get(0)
 
 	// no wp uploader
 	if ( ! el ) {
 		return;
 	}
 
-	// already inited
-	if ( field.$('.acf-dropzone-info').length ) {
-		return;
-	}
-
 	// https://stackoverflow.com/questions/1571076/remove-text-with-jquery
-	field.$('.hide-if-value>p')
+	field.$('.hide-if-value > p')
 		.contents()
 		.filter( function() {
 			return this.nodeType == 3; //Node.TEXT_NODE
 		})
 		.remove();
 
-	info = new UploaderInfo({or:true});
-	info.render();
-	info.$el.prependTo( field.$('.hide-if-value') );
+	// add dropzone info
+	if ( ! field.$('.acf-dropzone-info').length ) {
+		const info = new UploaderInfo({or:true});
+		info.render();
+		info.$el.prependTo( field.$('.hide-if-value') );
+	}
 
-
-	dropzone = new ACFDropzone({
-		el: el,
-		field: field
+	const dropzone = new ACFDropzone({
+		el,
+		field
 	});
 	dropzone.render();
 	dropzone.ready();
@@ -53,46 +45,39 @@ const initFileDropzone = field => {
 			field.render(attachment);
 		}
 	});
-
 }
 const initGalleryDropzone = field => {
+	const el = field.$('.acf-gallery-attachments').get(0);
 
-	let dropzone,
-		info,
-		el = field.$('.acf-gallery-attachments').get(0);
-
+	// not a dropzone
 	if ( ! field.$el.is('.dropzone') ) {
 		return;
 	}
 
-	if ( field.$('.acf-dropzone-info').length ) {
-		return;
+	// add dropzone info
+	if ( ! field.$('.acf-dropzone-info').length ) {
+		const info = new UploaderInfo( { or: false } );
+		info.render();
+		info.$el.prependTo( el );
 	}
 
-	info = new UploaderInfo({or:false});
-	info.render();
-	info.$el.prependTo( el );
-
-	dropzone = new ACFDropzone({
-		el: el,
-		field: field
+	const dropzone = new ACFDropzone({
+		el,
+		field
 	});
 	dropzone.render();
 	dropzone.ready();
 	dropzone.on('acf-dropzone-uploaded', attachment => {
-
 		field.appendAttachment(
 			attachment,
 			field.get('insert') === 'prepend' ? 0 : undefined
 		);
-
 	});
 }
 
-acf.addAction( 'new_field', field => {
-	if ( acf_dropzone.file_fields.includes( field.get('type') ) ) {
-		initFileDropzone( field )
-	} else if ( acf_dropzone.gallery_fields.includes( field.get('type') ) ) {
-		initGalleryDropzone( field )
-	}
-})
+acf_dropzone.file_fields.forEach( type => {
+	acf.addAction( `new_field/type=${type}`, initFileDropzone )
+} )
+acf_dropzone.gallery_fields.forEach( type => {
+	acf.addAction( `new_field/type=${type}`, initGalleryDropzone )
+} )

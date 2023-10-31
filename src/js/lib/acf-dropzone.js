@@ -7,7 +7,11 @@ import Progress from 'progress.js';
 module.exports = Backbone.View.extend({
 	initialize: function( opt ) {
 
-		const self = this, params = {};
+		const params = {};
+
+		// reset #28
+		this.el.removeAttribute('id')
+		this.$('.uploader-window,.moxie-shim').remove()
 
 		this.field = opt.field;
 
@@ -22,14 +26,15 @@ module.exports = Backbone.View.extend({
 
 		this.notice = false;
 		this.progress = false;
+
 		this.uploader = new wp.media.view.UploaderWindow({
 			controller: this,
 			uploader: {
 				dropzone:  this.el,
 				container: this.el,
 				params,
-				error: function( msg, err, file ) {
-					self.fileUploadError( self.uploader, {
+				error: ( msg, err, file ) => {
+					this.fileUploadError( this.uploader, {
 						message: msg,
 						file: file
 					} )
@@ -52,15 +57,14 @@ module.exports = Backbone.View.extend({
 		return this;
 	},
 	ready: function() {
-		const self = this;
 		this.$el
 		.on('drop dragenter dragleave dragover',function(e){
 			// prevent block editor file drop
 			e.stopPropagation()
 		})
-		.on('drop',function(e){
+		.on('drop',e => {
 			// reset error
-			self.removeNotice();
+			this.removeNotice();
 		});
 
 		this.trigger('activate')
