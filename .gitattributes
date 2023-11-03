@@ -16,3 +16,4 @@ composer.* export-ignore
 phpcs*.xml export-ignore
 phpunit.* export-ignore
 /test export-ignore
+.wp-release-info.json export-ignore
