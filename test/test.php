@@ -11,27 +11,22 @@ class PluginTest {
 
 		add_filter( 'acf/settings/save_json', [ $this, 'save_json' ] );
 
-
-		add_action( 'acf/delete_field_group', [ $this, 'mutate_field_group' ], 9 );
-		add_action( 'acf/trash_field_group', [ $this, 'mutate_field_group' ], 9 );
-		add_action( 'acf/untrash_field_group', [ $this, 'mutate_field_group' ], 9 );
-		add_action( 'acf/update_field_group', [ $this, 'mutate_field_group' ], 9 );
-
+		//
 		add_action( 'acf/init', [ $this, 'register_blocks' ] );
 		add_action( 'acf/init', [ $this, 'register_options_page' ] );
-
+		//
 		add_action( 'template_redirect', 'acf_form_head' );
-		add_filter( 'the_content', function( $content ) {
-
-			ob_start();
-			acf_form([
-				'id' => 'acf-form',
-				'new_post' => false,
-				'field_groups' => [ 'group_acf_dropzone_some' ],
-				'uploader' => 'wp',
-			]);
-			return $content . ob_get_clean();
-		});
+		// add_filter( 'the_content', function( $content ) {
+		//
+		// 	ob_start();
+		// 	acf_form([
+		// 		'id' => 'acf-form',
+		// 		'new_post' => false,
+		// 		'field_groups' => [ 'group_acf_dropzone_some' ],
+		// 		'uploader' => 'wp',
+		// 	]);
+		// 	return $content . ob_get_clean();
+		// });
 
 	}
 

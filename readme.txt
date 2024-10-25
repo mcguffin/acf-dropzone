@@ -5,7 +5,7 @@ Tags: drag-drop, paste, acf, file upload
 Requires at least: 5.0
 Requires PHP: 5.6
 Tested up to: 6.4
-Stable tag: 1.1.14
+Stable tag: 1.1.15
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -64,6 +64,9 @@ So, if this little piece of software made your life a bit easier, a donation at 
 On the whole upgrading is always a good idea.
 
 == Changelog ==
+
+= 1.1.15 =
+ - Fix: Broken CSS in webkit (chrome, edge)
 
 = 1.1.14 =
  - UI: Consistent size in focus state
