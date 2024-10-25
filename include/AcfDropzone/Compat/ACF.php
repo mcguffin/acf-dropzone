@@ -40,10 +40,11 @@ class ACF extends Core\Singleton {
 	 *	@action acf/init
 	 */
 	public function acf_init( $field ) {
-		$this->file_field_types = apply_filters( 'acf_dropzone/file_fields', [ 'image', 'file' ] );
+
+		$this->file_field_types    = apply_filters( 'acf_dropzone/file_fields', [ 'image', 'file' ] );
 		$this->gallery_field_types = apply_filters( 'acf_dropzone/gallery_fields', [ 'gallery' ] );
 
-		$field_types = array_merge( $this->file_field_types, $this->gallery_field_types );
+		$field_types              = array_merge( $this->file_field_types, $this->gallery_field_types );
 
 		foreach ( $field_types as $field_type ) {
 			add_action( 'acf/render_field_settings/type=' . $field_type, [ $this, 'add_dropzone_option' ] );
