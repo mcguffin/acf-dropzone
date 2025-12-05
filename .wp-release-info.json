@@ -1,9 +1,9 @@
 {
   "id": "https://github.com/mcguffin/acf-dropzone/raw/master/.wp-release-info.json",
   "slug": "acf-dropzone",
-  "version": "1.1.15",
+  "version": "1.1.16",
   "url": "https://wordpress.org/plugins/acf-dropzone/",
-  "package": "https://github.com/mcguffin/acf-dropzone/releases/download/1.1.15/acf-dropzone.zip",
-  "tested": "6.4",
+  "package": "https://github.com/mcguffin/acf-dropzone/releases/download/1.1.16/acf-dropzone.zip",
+  "tested": "6.9",
   "requires_php": "5.6"
 }
