@@ -135,16 +135,12 @@
 
 	.acf-gallery-attachments,
 	[data-uploader="wp"] {
-		&:not(:focus-within) {
-			.show-if-focus {
-				display: none;
-			}
+		&:focus-within .hide-if-focus,
+		&:not(:focus-within) .show-if-focus {
+			display: none;
 		}
 		&:focus {
 			box-shadow: 0 0 6px 3px rgba(wp-color(blue-70),0.66);
-			// .show-if-focus {
-			// 	display:initial;
-			// }
 		}
 	}
 

@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import UploaderInfo from 'uploader-info.js';
+import { GalleryUploaderInfo, UploaderInfo } from 'uploader-info.js';
 import ACFDropzone from 'acf-dropzone.js';
 
 const initFileDropzone = field => {
@@ -27,7 +27,7 @@ const initFileDropzone = field => {
 
 	// add dropzone info
 	if ( ! field.$('.acf-dropzone-info').length ) {
-		const info = new UploaderInfo({or:true});
+		const info = new UploaderInfo();
 		info.render();
 		info.$el.prependTo( field.$('.hide-if-value') );
 	}
@@ -56,7 +56,7 @@ const initGalleryDropzone = field => {
 
 	// add dropzone info
 	if ( ! field.$('.acf-dropzone-info').length ) {
-		const info = new UploaderInfo( { or: false } );
+		const info = new GalleryUploaderInfo();
 		info.render();
 		info.$el.prependTo( el );
 	}

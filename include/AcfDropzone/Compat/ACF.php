@@ -169,9 +169,15 @@ class ACF extends Core\Singleton {
 		<script type="text/html" id="tmpl-acf-dropzone-info">
 
 			<p class="show-if-focus drag-drop-info"><?php esc_html_e('Paste from Clipboard','acf-dropzone') ?></p>
-			<p class="show-if-focus"><?php esc_html_e('or','acf-dropzone') ?></p>
+			<p class="hide-if-focus drag-drop-info"><?php esc_html_e('Drop files here','acf-dropzone') ?></p>
+			<p><?php esc_html_e('or','acf-dropzone') ?></p>
+
+		</script>
+		<script type="text/html" id="tmpl-acf-dropzone-info-gallery">
+
 			<p class="drag-drop-info"><?php esc_html_e('Drop files here','acf-dropzone') ?></p>
-			<# if (data.or) { #><p><?php esc_html_e('or','acf-dropzone') ?></p><# } #>
+			<p class="show-if-focus"><?php esc_html_e('or','acf-dropzone') ?></p>
+			<p class="show-if-focus drag-drop-info"><?php esc_html_e('Paste from Clipboard','acf-dropzone') ?></p>
 
 		</script>
 		<script type="text/html" id="tmpl-acf-dropzone-attachment-title">
